@@ -1,0 +1,17 @@
+.babies{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.baby {
+    flex: 1 1;
+    padding: 20px 90px 20px 0;
+    font-size: 16px;
+    max-width: fit-content;
+}
+
+.baby_image{
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}

@@ -10,34 +10,29 @@ export const UserForm = () => {
 
     const [feedback, setFeedback] = useState("")
 
-    const localHoneyUser = localStorage.getItem("honey_user")
-    const honeyUserObject = JSON.parse(localHoneyUser)
+    const currentUser = JSON.parse(localStorage.getItem("app_user"))
 
-    // TODO: Get employee profile info from API and update state
     useEffect(() => {
-        fetch(`http://localhost:8088/employees?userId=${honeyUserObject.id}`)
+        fetch(`http://localhost:8088/users/${currentUser.id}`)
             .then(response => response.json())
-            .then((data) => {
-                const employeeObject = data[0]
-                updateProfile(employeeObject)
+            .then((user) => {
+                const userObj = user
+                updateProfile(userObj)
             })
     }, [])
 
     useEffect(() => {
         if (feedback !== "") {
-            // Clear feedback to make entire element disappear after 3 seconds
-            setTimeout(() => setFeedback(""), 3000);
+
+            setTimeout(() => setFeedback(""), 2000);
         }
     }, [feedback])
 
-    /*
-        TODO: Perform the PUT fetch() call here to update the profile.
-        Navigate user to home page when done.
-    */
+  
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
-        return fetch(`http://localhost:8088/employees/${profile.id}`, {
+        return fetch(`http://localhost:8088/users/${profile.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -46,7 +41,7 @@ export const UserForm = () => {
         })
             .then(response => response.json())
             .then(() => {
-                setFeedback("Employee profile successfully saved")
+                setFeedback("User profile successfully saved")
             })
     }
 
@@ -55,37 +50,50 @@ export const UserForm = () => {
             <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
                 {feedback}
             </div>
-            <h2 className="profile__title">Profile</h2>
+            <h2 className="profile__title">User Profile</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="specialty">Specialty:</label>
+                    <label htmlFor="name">Name:</label>
                     <input
                         required autoFocus
                         type="text"
                         className="form-control"
-                        value={profile.specialty}
+                        value={profile.name}
                         onChange={
                             (evt) => {
                                 const copy = { ...profile }
-                                copy.specialty = evt.target.value
+                                copy.name = evt.target.value
                                 updateProfile(copy)
-                                // TODO: Update specialty property
                             }
                         } />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Hourly rate:</label>
-                    <input type="number"
+                    <label htmlFor="email">Email:</label>
+                    <input type="email"
                         className="form-control"
-                        value={profile.rate}
+                        value={profile.email}
                         onChange={
                             (evt) => {
                                 const copy = { ...profile }
-                                copy.rate = parseFloat(evt.target.value, 2)
+                                copy.email = evt.target.value
                                 updateProfile(copy)
-                                // TODO: Update rate property
+                            }
+                        } />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="relationship">Relationship:</label>
+                    <input type="text"
+                        className="form-control"
+                        value={profile.relationship}
+                        onChange={
+                            (evt) => {
+                                const copy = { ...profile }
+                                copy.relationship = evt.target.value
+                                updateProfile(copy)
                             }
                         } />
                 </div>
@@ -93,7 +101,7 @@ export const UserForm = () => {
             <button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                 className="btn btn-primary">
-                Save Profile
+                Update Profile
             </button>
         </form>
     )
