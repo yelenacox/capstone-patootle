@@ -10,7 +10,7 @@ export const NavBar = () => {
                 <Link className="navbar__link" to="/create">Add New Entry</Link>
             </li>
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/all">All Entries</Link>
+                <Link className="navbar__link" to="/entries">All Entries</Link>
             </li>
             <li className="navbar__item active navbar__right">
                 <Link className="navbar__link" to="/profile">Profile</Link>

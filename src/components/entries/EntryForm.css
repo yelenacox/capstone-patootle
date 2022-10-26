@@ -1,6 +1,6 @@
 .entries {
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: column;
 }
 
 .entry_form {
@@ -8,4 +8,8 @@
     padding: 20px 90px 20px 0;
     font-size: 16px;
     max-width: fit-content;
+}
+
+.entry {
+    padding-bottom: 2rem;
 }

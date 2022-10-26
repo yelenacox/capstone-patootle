@@ -45,7 +45,7 @@ export const EntryForm = () => {
         })
             .then(res => res.json())
             .then(() => {
-                navigate("/all")
+                navigate("/entries")
             })
 
     }
@@ -60,7 +60,7 @@ export const EntryForm = () => {
                     <fieldset>
                         <div className="form-group">
                             <label htmlFor="baby_name">Baby:</label>
-                            {filteredBabies ? filteredBabies.map(
+                            {filteredBabies.map(
                                 (userBaby) => {
                                     return <><input
                                         type="radio"
@@ -72,7 +72,7 @@ export const EntryForm = () => {
                                                 update({...entry, userBabyId: parseInt(e.target.value)})
                                             }
                                         }/>
-                                        <label for={userBaby?.baby?.name}>{userBaby?.baby?.name}</label></>}):"Go Make a Baby!"}
+                                        <label for={userBaby?.baby?.name}>{userBaby?.baby?.name}</label></>})}
                         </div>
                     </fieldset>
                     <fieldset>
