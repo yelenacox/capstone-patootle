@@ -35,7 +35,6 @@ export const EntryForm = () => {
             description: entry.description,
             dateTime: entry.dateTime
         }
-        console.log(entryToSendToAPI)
         return fetch(`http://localhost:8088/entries?_expand=userBaby/?userBabyId=1`, {
             method: "POST",
             headers: {
@@ -78,7 +77,7 @@ export const EntryForm = () => {
                     <fieldset>
                         <div className="form-group">
                             <label htmlFor="entry_type">Entry Type</label>
-                            <select classname="entry_type"
+                            <select className="entry_type"
                                 value={entry.entryType}
                                 onChange={
                                     (evt) => {
