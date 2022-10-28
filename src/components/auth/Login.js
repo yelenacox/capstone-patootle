@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom"
 import "./Login.css"
 
-export const Login = () => {
+export const Login = ({login}) => {
     const [email, set] = useState("")
     const navigate = useNavigate()
 
@@ -15,6 +15,11 @@ export const Login = () => {
             .then(foundUsers => {
                 if (foundUsers.length === 1) {
                     const user = foundUsers[0]
+                    console.log("Setting")
+                    login({
+                        id: user.id,
+                        admin: user.isAdmin
+                    })
                     localStorage.setItem("app_user", JSON.stringify({
                         id: user.id,
                         admin: user.isAdmin

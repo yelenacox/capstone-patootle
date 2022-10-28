@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import "./NavBar.css"
 
-export const NavBar = () => {
+export const NavBar = ({logout}) => {
     const navigate = useNavigate()
 
     return (
@@ -13,12 +13,17 @@ export const NavBar = () => {
                 <Link className="navbar__link" to="/entries">All Entries</Link>
             </li>
             <li className="navbar__item active navbar__right">
+                <Link className="navbar__link" to="/add_baby">Add Baby</Link>
+            </li>
+            <li className="navbar__item active navbar__right">
                 <Link className="navbar__link" to="/profile">Profile</Link>
             </li>
             {
                 <li className="navbar__item navbar__right">
                     <Link className="navbar__link" to="" onClick={() => {
-                        localStorage.removeItem("app_user")
+                        console.log("clearing")
+                        logout(undefined)
+                        localStorage.removeItem("app_user");
                         navigate("/", { replace: true })
                     }}>Logout</Link>
                 </li>
