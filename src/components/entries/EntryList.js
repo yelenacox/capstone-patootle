@@ -21,7 +21,7 @@ export const EntryList = () => {
             fetch(`http://localhost:8088/userBabies?_expand=baby`)
                 .then(response => response.json())
                 .then((array) => {
-                    setUserBabies(array.filter((userBaby)=>userBaby.userId===currentUser.id))
+                    setUserBabies(array.filter((userBaby) => userBaby.userId === currentUser.id))
                     // setSelectedUserBaby(array[0].babyId)
                 })
 
@@ -36,9 +36,9 @@ export const EntryList = () => {
         ,
         [entries]
     )
-    useEffect(()=>{
+    useEffect(() => {
         setFilteredBabyEntries(filteredUserEntries.filter(entry => entry.userBabyId === selectedUserBaby))
-    },[selectedUserBaby, filteredUserEntries])
+    }, [selectedUserBaby, filteredUserEntries])
     // }
 
     return <>
@@ -47,6 +47,7 @@ export const EntryList = () => {
         {userBabies.map(
             (userBaby) => {
                 return <><input
+                    key={`userBaby--${userBaby.id}`}
                     type="radio"
                     value={userBaby?.babyId}
                     name={userBaby?.baby?.name}
@@ -56,7 +57,7 @@ export const EntryList = () => {
                             setSelectedUserBaby(parseInt(e.target.value))
                         }
                     } />
-                    <label for={userBaby?.baby?.name}>{userBaby?.baby?.name}</label></>
+                    <label htmlFor={userBaby?.baby?.name}>{userBaby?.baby?.name}</label></>
             })}
         <article className="entries">
             {filteredBabyEntries

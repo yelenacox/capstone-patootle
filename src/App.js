@@ -23,7 +23,9 @@ export const App = () => {
 			<Authorized>
 				<>
 					<NavBar logout={setCurrentUser} />
-					<AppViews currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+					<AppViews 
+					currentUser={currentUser} 
+					setCurrentUser={setCurrentUser}/>
 					
 				</>
 			</Authorized>

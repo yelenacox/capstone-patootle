@@ -8,6 +8,11 @@ export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries }) =
     const [editButton, setEdit] = useState(false)
     const [toggle, setToggle] = useState(false)
 
+    // useEffect(
+    //     () => {},
+    //     [editButton]
+    // )
+
     useEffect(
         () => {
             setToggle(!toggle)
@@ -31,22 +36,29 @@ export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries }) =
 
     return <section key={entry.id} className="entry">
         <div className="entry_div">{entry.entryType}
-
+        { currentUser.admin ? <>
             <button
                 className="entry_button"
-                onClick={() => navigate(`${entry.id}/edit`)}>
-                Edit
+                onClick={() => navigate(`${entry.id}/edit`)
+                // setEdit(!editButton)
+                }>
+                    Edit
             </button>
             <button
                 className="entry_button"
                 onClick={deleteButton}>
                 Delete
             </button>
+            </> 
+            : ""}
+
 
 
         </div>
-        <div className="entry_div">{entry.dateTime}</div>
+       {/* {editButton ? <EntryEdit/> :(<> */}
+       <div className="entry_div">{entry.dateTime}</div>
         <div className="entry_div">{entry.description}</div>
+        {/* </>)} */}
 
     </section>
 }

@@ -62,16 +62,18 @@ export const EntryForm = () => {
                             {filteredBabies.map(
                                 (userBaby) => {
                                     return <><input
+                                        key={`entry--${userBaby.id}`}
                                         type="radio"
                                         value={userBaby?.babyId}
                                         name={userBaby?.baby?.name}
                                         checked={entry.userBabyId === userBaby?.babyId}
                                         onChange={
                                             (e) => {
-                                                update({...entry, userBabyId: parseInt(e.target.value)})
+                                                update({ ...entry, userBabyId: parseInt(e.target.value) })
                                             }
-                                        }/>
-                                        <label for={userBaby?.baby?.name}>{userBaby?.baby?.name}</label></>})}
+                                        } />
+                                        <label for={userBaby?.baby?.name}>{userBaby?.baby?.name}</label></>
+                                })}
                         </div>
                     </fieldset>
                     <fieldset>
