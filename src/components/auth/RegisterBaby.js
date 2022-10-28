@@ -2,9 +2,8 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./Login.css"
 
-const currentUser = JSON.parse(localStorage.getItem("app_user"))
-
-export const RegisterBaby = () => {
+export const RegisterBaby = ({currentUser}) => {
+    console.log(currentUser.id)
     const [baby, setBaby] = useState({
         name: "",
         picture: "",
@@ -19,14 +18,12 @@ export const RegisterBaby = () => {
     let navigate = useNavigate()
 
     const babyToSendToAPI = {
-        id: baby.id,
         name: baby.name,
         picture: baby.picture,
         birthday: baby.birthday
     }
 
     const userBabyToSendToAPI = {
-        id: userBaby.id,
         userId: currentUser.id,
         babyId: userBaby.babyId,
     }
@@ -51,8 +48,8 @@ export const RegisterBaby = () => {
                     body: JSON.stringify(userBabyToSendToAPI)
                 })
                     .then(res => res.json())
-                    .then(() => {
-                        setUserBaby()
+                    .then((data) => {
+                        setUserBaby(data)
                     })
                     .then(() => {
                         navigate("/")
@@ -101,4 +98,3 @@ export const RegisterBaby = () => {
         </main>
     )
 }
-

@@ -7,8 +7,9 @@ export const EntryEdit = () => {
         description: "",
         dateTime: ""
     })
-    
+
     const { entryId } = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch(`http://localhost:8088/entries/${entryId}`)
@@ -17,8 +18,6 @@ export const EntryEdit = () => {
                 updateEntry(data)
             })
     }, [entryId])
-
-    const navigate = useNavigate()
 
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
@@ -29,38 +28,81 @@ export const EntryEdit = () => {
             },
             body: JSON.stringify(entry)
         })
+
             .then(response => response.json())
-            .then(() => {
-                // navigate(`/customers/${customer.id}`)
+            .then((newEntryData) => {
+                navigate("/entries")
             })
     }
 
-    // return <form className="entry_edit">
-    //     <header className="customer__header">{customer?.user?.name}</header>
-    //     <div>Email: {customer?.user?.email}</div>
-    //     <fieldset>
-    //         <div className="form-group">
-    //             <label htmlFor="loyalty_number">Loyalty Number:</label>
-    //             <textarea
-    //                 required autoFocus
-    //                     type="number"
-    //                     className="form-control"
-    //                 value={customer.loyaltyNumber}
-    //                 onChange={
-    //                     (evt) => {
-    //                         const copy = { ...customer }
-    //                         copy.loyaltyNumber = parseInt(evt.target.value)
-    //                         updateCustomer(copy)
-    //                         // TODO: Update state with a mod ified copy
-    //                     }
-    //                 }>{customer.loyaltyNumber}</textarea>
-    //         </div>
-    //     </fieldset>
-    //     <button
-    //         onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
-    //         className="button_edit">
-    //         Save Edits
-    //     </button>
-    // </form>
+    return <><article className="entries">
+        <section>
+            <form className="entry_form">
+                <h2 className="entry_form_title">Edit Entry</h2>
+                <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="entry_type">Entry Type</label>
+                        <select className="entry_type"
+                            value={entry.entryType}
+                            onChange={
+                                (evt) => {
+                                    const copy = { ...entry }
+                                    copy.entryType = evt.target.value
+                                    updateEntry(copy)
+                                }}
+                        >
+                            <option value="0">Select Entry Type</option>
+                            <option value="Nap">Nap</option>
+                            <option value="Diaper">Diaper</option>
+                            <option value="Solid Food">Solid Food</option>
+                            <option value="Liquids">Liquids</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="description">Description</label>
+                        <input
+                            required autoFocus
+                            type="text"
+                            className="form-control"
+                            placeholder={entry.description}
+                            value={entry.description}
+                            onChange={
+                                (evt) => {
+                                    const copy = { ...entry }
+                                    copy.description = evt.target.value
+                                    updateEntry(copy)
+                                }
+                            }
+                        />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="date_time">Date & Time</label>
+                        <input
+                            required autoFocus
+                            type="datetime-local"
+                            className="form-control"
+                            value={entry.dateTime}
+                            onChange={
+                                (evt) => {
+                                    const copy = { ...entry }
+                                    copy.dateTime = evt.target.value
+                                    updateEntry(copy)
+                                }
+                            }
+                        />
+                    </div>
+                </fieldset>
+                <button
+                    onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
+                    className="button_edit">
+                    Save Edits
+                </button>
+            </form>
+        </section>
+    </article></>
 
 }

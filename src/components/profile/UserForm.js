@@ -1,23 +1,15 @@
 import { useEffect, useState } from "react"
 
-export const UserForm = () => {
-
-    const [profile, updateProfile] = useState({
-        name: "",
-        email: "",
-        relationship: ""
-    })
+export const UserForm = ({currentUser, setCurrentUser}) => {
 
     const [feedback, setFeedback] = useState("")
-
-    const currentUser = JSON.parse(localStorage.getItem("app_user"))
 
     useEffect(() => {
         fetch(`http://localhost:8088/users/${currentUser.id}`)
             .then(response => response.json())
             .then((user) => {
                 const userObj = user
-                updateProfile(userObj)
+                setCurrentUser(userObj)
             })
     }, [])
 
@@ -32,12 +24,12 @@ export const UserForm = () => {
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
-        return fetch(`http://localhost:8088/users/${profile.id}`, {
+        return fetch(`http://localhost:8088/users/${currentUser.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(profile)
+            body: JSON.stringify(currentUser)
         })
             .then(response => response.json())
             .then(() => {
@@ -58,12 +50,12 @@ export const UserForm = () => {
                         required autoFocus
                         type="text"
                         className="form-control"
-                        value={profile.name}
+                        value={currentUser.name}
                         onChange={
                             (evt) => {
-                                const copy = { ...profile }
+                                const copy = { ...currentUser }
                                 copy.name = evt.target.value
-                                updateProfile(copy)
+                                setCurrentUser(copy)
                             }
                         } />
                 </div>
@@ -73,12 +65,12 @@ export const UserForm = () => {
                     <label htmlFor="email">Email:</label>
                     <input type="email"
                         className="form-control"
-                        value={profile.email}
+                        value={currentUser.email}
                         onChange={
                             (evt) => {
-                                const copy = { ...profile }
+                                const copy = { ...currentUser }
                                 copy.email = evt.target.value
-                                updateProfile(copy)
+                                setCurrentUser(copy)
                             }
                         } />
                 </div>
@@ -88,12 +80,12 @@ export const UserForm = () => {
                     <label htmlFor="relationship">Relationship:</label>
                     <input type="text"
                         className="form-control"
-                        value={profile.relationship}
+                        value={currentUser.relationship}
                         onChange={
                             (evt) => {
-                                const copy = { ...profile }
+                                const copy = { ...currentUser }
                                 copy.relationship = evt.target.value
-                                updateProfile(copy)
+                                setCurrentUser(copy)
                             }
                         } />
                 </div>

@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
+import { EntryEdit } from "./EntryEdit"
 import { EntryList } from "./EntryList"
 
-export const Entry = ({ filteredBabyEntries, setFilteredBabyEntries, currentUser, entry, setEntries, setUserBabies, setSelectedUserBaby, setFilteredUserEntries, selectedUserBaby }) => {
+export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries }) => {
     const navigate = useNavigate()
     const [editButton, setEdit] = useState(false)
     const [toggle, setToggle] = useState(false)
-    useEffect(() => { setToggle(!toggle) },
+
+    useEffect(
+        () => {
+            setToggle(!toggle)
+        },
         [filteredBabyEntries])
 
     const deleteButton = (event) => {
@@ -20,21 +25,23 @@ export const Entry = ({ filteredBabyEntries, setFilteredBabyEntries, currentUser
                 .then(response => response.json())
                 .then((newEntryData) => {
                     setEntries(newEntryData)
-                    // const whateverTheFuck = newEntryData.filter(entry => entry?.userBaby?.userId === currentUser.id)
-                    // return whateverTheFuck
                 })
-                // .then((filteredEntryData) => { return filteredEntryData.filter(entry => entry.userBabyId === selectedUserBaby) })
-                // .then((superFilteredData) => { setFilteredBabyEntries(superFilteredData) })
         }
-
     }
 
     return <section key={entry.id} className="entry">
         <div className="entry_div">{entry.entryType}
 
             <button
-                className="entry_button">Edit</button>
-            <button onClick={deleteButton}>Delete</button>
+                className="entry_button"
+                onClick={() => navigate(`${entry.id}/edit`)}>
+                Edit
+            </button>
+            <button
+                className="entry_button"
+                onClick={deleteButton}>
+                Delete
+            </button>
 
 
         </div>

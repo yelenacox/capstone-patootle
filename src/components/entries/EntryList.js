@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Entry } from "./Entry"
+import { EntryEdit } from "./EntryEdit"
 
 export const EntryList = () => {
     const [entries, setEntries] = useState([])
@@ -63,14 +64,9 @@ export const EntryList = () => {
                     (entry) => <Entry
                         key={`entry--${entry.id}`}
                         filteredBabyEntries={filteredBabyEntries}
-                        setFilteredBabyEntries={setFilteredBabyEntries}
                         currentUser={currentUser}
                         entry={entry}
                         setEntries={setEntries}
-                        setUserBabies={setUserBabies}
-                        setSelectedUserBaby={setSelectedUserBaby}
-                        setFilteredUserEntries={setFilteredUserEntries}
-                        selectedUserBaby={selectedUserBaby}
                     />
                 )
             }
