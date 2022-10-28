@@ -30,7 +30,7 @@ export const EntryEdit = () => {
         })
 
             .then(response => response.json())
-            .then((newEntryData) => {
+            .then(() => {
                 navigate("/entries")
             })
     }

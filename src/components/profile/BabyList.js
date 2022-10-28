@@ -25,7 +25,7 @@ export const BabyList = () => {
     {
         userBabies.map(userBaby =>{
             
-            return <section className="baby">
+            return <section key={`userBaby--${userBaby.id}`} className="baby">
                 <img class="baby_image" src={userBaby?.baby?.picture}/>
                 <div>{userBaby?.baby?.name}</div>
                 <div>{userBaby?.baby?.birthday}</div>

@@ -31,7 +31,7 @@ export const Register = ({setCurrentUser}) => {
                         admin: createdUser.isAdmin
                     }))
 
-                    navigate("/")
+                    navigate("/add_baby")
                 }
             })
     }
