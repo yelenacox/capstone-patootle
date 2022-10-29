@@ -5,10 +5,13 @@
 
 .entry_form {
     flex: 1 1;
-    padding: 20px 90px 20px 0;
+    padding: 20px 90px;
     font-size: 16px;
     max-width: fit-content;
-}
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    background-color: #FDFEF8;
+    margin-left: 20%;
+    }
 
 .entry {
     padding-bottom: 2rem;

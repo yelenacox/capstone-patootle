@@ -66,6 +66,7 @@ export const EntryForm = () => {
                                         type="radio"
                                         value={userBaby?.babyId}
                                         name={userBaby?.baby?.name}
+                                        required
                                         checked={entry.userBabyId === userBaby?.babyId}
                                         onChange={
                                             (e) => {
@@ -87,6 +88,7 @@ export const EntryForm = () => {
                                         copy.entryType = evt.target.value
                                         update(copy)
                                     }}
+                                    required
                             >
                                 <option value="0">Select Entry Type</option>
                                 <option value="Nap">Nap</option>

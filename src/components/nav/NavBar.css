@@ -1,18 +1,54 @@
 .navbar {
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
+    flex-flow: row nowrap;
+    background-color: #FDFEF8;
+    margin: 0;
+    padding: 0;
+    border: 1px solid #453945;
+    align-items: center;
+    font-size:medium;
 }
 
 .navbar__item {
-    flex-basis: 15%;
     list-style-type: none;
-}
 
-.navbar__right {
-    margin-left: auto;
 }
 
 .navbar__link {
     cursor: pointer;
+}
+
+.navbar__link:link{
+    text-decoration: none;
+}
+
+.navbar__link:hover{
+    font-size:larger;
+}
+
+img {
+    width: 80px;
+    border-radius: 50%;
+    margin-right: 80px;
+}
+
+.navbar__item__center {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.navbar__center{
+padding-right: 20px;
+}
+
+.navbar__right {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-left: auto;
+    padding-right: 20px;
+}
+
+.navbar__item__right {
+   padding-right: 20px;
 }
