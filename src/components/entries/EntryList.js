@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { Entry } from "./Entry"
 import { EntryEdit } from "./EntryEdit"
 
@@ -41,23 +42,28 @@ export const EntryList = () => {
     }, [selectedUserBaby, filteredUserEntries])
     // }
 
+
+
+
     return <>
+
         <h2>Entries</h2>
         <label htmlFor="baby_name">Baby:</label>
         {userBabies.map(
             (userBaby) => {
-                return <><input
-                    key={`userBaby--${userBaby.id}`}
-                    type="radio"
-                    value={userBaby?.babyId}
-                    name={userBaby?.baby?.name}
-                    checked={selectedUserBaby === userBaby?.babyId}
-                    onChange={
-                        (e) => {
-                            setSelectedUserBaby(parseInt(e.target.value))
-                        }
-                    } />
-                    <label htmlFor={userBaby?.baby?.name}>{userBaby?.baby?.name}</label></>
+                    return <><input
+                        key={`userBaby--${userBaby.id}`}
+                        type="radio"
+                        value={userBaby?.babyId}
+                        name={userBaby?.baby?.name}
+                        checked={selectedUserBaby === userBaby?.babyId}
+                        onChange={
+                            (e) => {
+                                setSelectedUserBaby(parseInt(e.target.value))
+                            }
+                        } />
+                        <label htmlFor={userBaby?.baby?.name}>{userBaby?.baby?.name}</label></>
+                
             })}
         <article className="entries">
             {filteredBabyEntries

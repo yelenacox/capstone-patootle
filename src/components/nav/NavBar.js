@@ -1,33 +1,37 @@
 import { Link, useNavigate } from "react-router-dom"
 import "./NavBar.css"
 
+
 export const NavBar = ({logout}) => {
     const navigate = useNavigate()
 
     return (
         <ul className="navbar">
-            <li className="navbar__item active">
-                <Link className="navbar__link" to="/create">Add New Entry</Link>
+            <div className="navbar__item__center">
+            <li className="navbar__item active"><img className="nav_logo" src="https://i.ibb.co/gW6PVmb/Patootle-Logo-transparent.png"/></li>
+            <li className="navbar__item active navbar__create navbar__center">
+                <Link className="navbar__link" to="/create">new entry</Link>
             </li>
-            <li className="navbar__item active">
-                <Link className="navbar__link" to="/entries">All Entries</Link>
+            <li className="navbar__item active navbar__all navbar__center">
+                <Link className="navbar__link" to="/entries">all entries</Link>
             </li>
-            <li className="navbar__item active navbar__right">
-                <Link className="navbar__link" to="/add_baby">Add Baby</Link>
-            </li>
-            <li className="navbar__item active navbar__right">
-                <Link className="navbar__link" to="/profile">Profile</Link>
+            <li className="navbar__item active navbar__add__baby navbar__center">
+                <Link className="navbar__link" to="/add_baby">add baby</Link>
+            </li></div>
+            <div className="navbar__right">
+            <li className="navbar__item active navbar__item__right">
+                <Link className="navbar__link" to="/profile">profile</Link>
             </li>
             {
-                <li className="navbar__item navbar__right">
-                    <Link className="navbar__link" to="" onClick={() => {
+                <li className="navbar__item active">
+                    <Link className="navbar__link navbar__item__right" to="" onClick={() => {
                         console.log("clearing")
                         logout(undefined)
                         localStorage.removeItem("app_user");
                         navigate("/", { replace: true })
-                    }}>Logout</Link>
+                    }}>logout</Link>
                 </li>
-            }
+            }</div>
         </ul>
     )
 }

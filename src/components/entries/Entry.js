@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from 'react-router-dom'
 import { EntryEdit } from "./EntryEdit"
+import { EntryEditSamePage } from "./EntryEditSamePage"
 import { EntryList } from "./EntryList"
 
 export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries }) => {
@@ -35,12 +36,13 @@ export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries }) =
     }
 
     return <section key={entry.id} className="entry">
-        <div className="entry_div">{entry.entryType}
         { currentUser.admin ? <>
             <button
                 className="entry_button"
                 onClick={() => navigate(`${entry.id}/edit`)
-                // setEdit(!editButton)
+                    // setEdit(!editButton)
+                    
+                
                 }>
                     Edit
             </button>
@@ -54,8 +56,9 @@ export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries }) =
 
 
 
-        </div>
-       {/* {editButton ? <EntryEdit/> :(<> */}
+
+       {/* {editButton ? <EntryEditSamePage/> :(<> */}
+        <div className="entry_div">{entry.entryType}</div>
        <div className="entry_div">{entry.dateTime}</div>
         <div className="entry_div">{entry.description}</div>
         {/* </>)} */}
