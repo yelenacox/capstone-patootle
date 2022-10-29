@@ -9,8 +9,8 @@
     font-size: 16px;
     max-width: fit-content;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    background-color: #FDFEF8;
-    margin-left: 20%;
+    background-color: rgb(253, 254, 248, 0.8);
+    margin: 10% 0 0 20%;
     }
 
 .entry {
