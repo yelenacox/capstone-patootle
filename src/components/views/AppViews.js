@@ -10,7 +10,7 @@ export const AppViews = ({currentUser, setCurrentUser}) => {
         <Routes>
             <Route path="/" element={
                 <>
-                    <h1>Patootle</h1>
+                 
                     <Outlet />
                 </>
             }>
