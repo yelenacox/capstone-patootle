@@ -16,3 +16,14 @@
 .entry {
     padding-bottom: 2rem;
 }
+
+.input_field {
+    height: fit-content;
+    width: fit-content;
+    padding: 0 0 0 3px;;
+}
+
+.input_date_time {
+    width: fit-content;
+    height: fit-content;
+}

@@ -2,8 +2,8 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./Login.css"
 
-export const RegisterBaby = ({currentUser}) => {
-    console.log(currentUser.id)
+export const RegisterBaby = () => {
+
     const [baby, setBaby] = useState({
         name: "",
         picture: "",
@@ -14,6 +14,8 @@ export const RegisterBaby = ({currentUser}) => {
         userId: 0,
         babyId: 0
     })
+
+    const currentUser = JSON.parse(localStorage.getItem("app_user"))
 
     let navigate = useNavigate()
 
@@ -72,7 +74,7 @@ export const RegisterBaby = ({currentUser}) => {
     return (
         <main style={{ textAlign: "center" }}>
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Add New Baby</h1>
+                <h2 className="h3 mb-3 font-weight-normal">Please Add New Baby</h2>
                 <fieldset>
                     <label htmlFor="name"> Baby's Name </label>
                     <input onChange={addBabyProperties}
@@ -92,7 +94,7 @@ export const RegisterBaby = ({currentUser}) => {
                         placeholder="Baby's birthday" required />
                 </fieldset>
                 <fieldset>
-                    <button type="submit"> Add New Baby</button>
+                    <button type="submit">Add New Baby</button>
                 </fieldset>
             </form>
         </main>

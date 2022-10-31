@@ -7,12 +7,12 @@ export const EntryForm = () => {
         userBabyId: 0,
         entryType: "",
         description: "",
-        dateTime: ""
+        date: "",
     })
-
+    const currentUser = JSON.parse(localStorage.getItem("app_user"))
     const [filteredBabies, setFiltered] = useState([])
 
-    const currentUser = JSON.parse(localStorage.getItem("app_user"))
+    // const currentUser = JSON.parse(localStorage.getItem("app_user"))
     const navigate = useNavigate()
 
     useEffect(

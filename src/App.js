@@ -11,21 +11,18 @@ import { Authorized } from "./components/views/Authorized"
 
 
 export const App = () => {
-	const [currentUser, setCurrentUser] = useState({})
 
 	return <Routes>
-		<Route path="/login" element={<Login login={setCurrentUser}/>} />
-		<Route path="/register" element={<Register setCurrentUser={setCurrentUser} />} />
+		<Route path="/login" element={<Login />} />
+		<Route path="/register" element={<Register />} />
 		
 
 
 		<Route path="*" element={
 			<Authorized>
 				<>
-					<NavBar logout={setCurrentUser} />
-					<AppViews 
-					currentUser={currentUser} 
-					setCurrentUser={setCurrentUser}/>
+					<NavBar />
+					<AppViews />
 					
 				</>
 			</Authorized>

@@ -8,8 +8,9 @@ export const BabyList = () => {
     const [buttonClick, setButton] = useState(false)
 
     const navigate = useNavigate()
-
     const currentUser = JSON.parse(localStorage.getItem("app_user"))
+
+    // const currentUser = JSON.parse(localStorage.getItem("app_user"))
 
     useEffect(
         () => {

@@ -6,13 +6,12 @@ export const UserForm = () => {
         email: "",
         relationship: ""
     })
-
-    const appUserObject = JSON.parse(localStorage.getItem("app_user"))
     
+    const currentUser = JSON.parse(localStorage.getItem("app_user"))
     const [feedback, setFeedback] = useState("")
 
     useEffect(() => {
-        fetch(`http://localhost:8088/users/${appUserObject.id}`)
+        fetch(`http://localhost:8088/users/${currentUser.id}`)
             .then(response => response.json())
             .then((user) => {
                 const userObj = user
