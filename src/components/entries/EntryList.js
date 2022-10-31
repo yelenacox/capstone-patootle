@@ -10,7 +10,9 @@ export const EntryList = () => {
     const [filteredUserEntries, setFilteredUserEntries] = useState([])
     const [filteredBabyEntries, setFilteredBabyEntries] = useState([])
 
+
     const currentUser = JSON.parse(localStorage.getItem("app_user"))
+    // const currentUser = JSON.parse(localStorage.getItem("app_user"))
 
     useEffect(
         () => {

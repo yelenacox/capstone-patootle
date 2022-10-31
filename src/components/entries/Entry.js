@@ -9,10 +9,10 @@ export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries }) =
     const [editButton, setEdit] = useState(false)
     const [toggle, setToggle] = useState(false)
 
-    // useEffect(
-    //     () => {},
-    //     [editButton]
-    // )
+    useEffect(
+        () => {},
+        [editButton]
+    )
 
     useEffect(
         () => {
@@ -36,12 +36,11 @@ export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries }) =
     }
 
     return <section key={entry.id} className="entry">
-        { currentUser.admin ? <>
+        { currentUser.admin && editButton === false ? <>
             <button
                 className="entry_button"
-                onClick={() => navigate(`${entry.id}/edit`)
-                    // setEdit(!editButton)
-                    
+                onClick={() => setEdit(!editButton)
+                    // navigate(`${entry.id}/edit`)               
                 
                 }>
                     Edit
@@ -57,11 +56,11 @@ export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries }) =
 
 
 
-       {/* {editButton ? <EntryEditSamePage/> :(<> */}
+       {editButton ? <EntryEditSamePage entryObj={entry}/> :(<>
         <div className="entry_div">{entry.entryType}</div>
        <div className="entry_div">{entry.dateTime}</div>
         <div className="entry_div">{entry.description}</div>
-        {/* </>)} */}
+        </>)}
 
     </section>
 }

@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./Login.css"
 
-export const Register = ({setCurrentUser}) => {
+export const Register = () => {
     const [user, setUser] = useState({
         name: "",
         email: "",
@@ -22,10 +22,7 @@ export const Register = ({setCurrentUser}) => {
             .then(res => res.json())
             .then(createdUser => {
                 if (createdUser.hasOwnProperty("id")) {
-                    setCurrentUser({
-                        id: createdUser.id,
-                        admin: createdUser.isAdmin
-                    })
+                   
                     localStorage.setItem("app_user", JSON.stringify({
                         id: createdUser.id,
                         admin: createdUser.isAdmin

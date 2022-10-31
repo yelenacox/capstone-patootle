@@ -2,12 +2,11 @@ import { BabyForm } from "./BabyForm"
 import { BabyList } from "./BabyList"
 import { UserForm } from "./UserForm"
 
-export const Profile = ({currentUser, setCurrentUser}) => {
+export const Profile = () => {
 
        return <>
        
-       <UserForm currentUser={currentUser} setCurrentUser={setCurrentUser}/> 
-       <BabyList />
+       <UserForm /> <BabyList />
 
        </>
     }
