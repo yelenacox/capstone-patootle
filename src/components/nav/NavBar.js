@@ -5,7 +5,6 @@ import "./NavBar.css"
 
 export const NavBar = () => {
     const navigate = useNavigate()
-    const currentUser = JSON.parse(localStorage.getItem("app_user"))
 
     return (
         <ul className="navbar">
@@ -21,7 +20,7 @@ export const NavBar = () => {
                     <Link className="navbar__link" to="/add_baby">add baby</Link>
                 </li></div>
             <div className="navbar__right">
-                <NavBabyChoice currentUser={currentUser} />
+                <NavBabyChoice />
                 <li className="navbar__item active navbar__item__right">
                     <Link className="navbar__link" to="/profile">profile</Link>
                 </li>
