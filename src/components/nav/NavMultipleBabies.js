@@ -22,19 +22,18 @@ export const NavMultipleBabies = () => {
                     <div className="select-group">
                         <label htmlFor="baby_choice">Baby</label>
                         <select className="baby_choice"
-                            value={userBaby?.babyId}
+                            value={babyChoices?.babyId}
                             required
                             onChange={
                                 (evt) => {
-                                    setBabyChoices({
-                                        ...babyChoices, userBabyId:
-                                            parseInt(evt.target.value)
-                                    })
+                                    const copy = { ...babyChoices }
+                                    copy.userBabyId = parseInt(evt.target.value)
+                                    setBabyChoices(copy)
                                 }} >
                             {
                                 babyChoices.map((userBaby) => {
                                     return <>
-                                    <option value="0">{userBaby?.baby?.name}</option>
+                                    <option className="baby_option" value="0"><img className="baby_image" src={userBaby?.baby?.picture}/> {userBaby?.baby?.name}</option>
                                     </>
                                 })
                             }
