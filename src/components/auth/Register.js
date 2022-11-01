@@ -28,7 +28,7 @@ export const Register = () => {
                         admin: createdUser.isAdmin
                     }))
 
-                    navigate("/add_baby")
+                    navigate("/register_baby")
                 }
             })
     }
@@ -58,7 +58,7 @@ export const Register = () => {
     return (
         <main style={{ textAlign: "center" }}>
             <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Register for Patootle</h1>
+                <h2 className="h3 mb-3 font-weight-normal">Please Register for Patootle</h2>
                 <fieldset>
                     <label htmlFor="name"> Full Name </label>
                     <input onChange={updateUser}

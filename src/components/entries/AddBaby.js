@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import "./Login.css"
+import "./EntryForm.css"
 
-export const RegisterBaby = () => {
+export const AddBaby = () => {
 
     const [baby, setBaby] = useState({
         name: "",
@@ -72,31 +72,33 @@ export const RegisterBaby = () => {
     }
 
     return (
-        <main style={{ textAlign: "center" }}>
-            <form className="form--login" onSubmit={handleRegister}>
-                <h2 className="h3 mb-3 font-weight-normal">Please Add New Baby</h2>
-                <fieldset>
-                    <label htmlFor="name"> Baby's Name </label>
-                    <input onChange={addBabyProperties}
-                        type="text" id="name" className="form-control"
-                        placeholder="Enter baby's name" required autoFocus />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="picture"> Baby's picture </label>
-                    <input onChange={addBabyProperties}
-                        type="text" id="picture" className="form-control"
-                        placeholder="Picture URL" />
-                </fieldset>
-                <fieldset>
-                    <label htmlFor="birthday"> Birthday </label>
-                    <input onChange={addBabyProperties}
-                        type="date" id="birthday" className="form-control"
-                        placeholder="Baby's birthday" required />
-                </fieldset>
-                <fieldset>
-                    <button type="submit">Register Baby</button>
-                </fieldset>
-            </form>
-        </main>
+        <article className="entries_form">
+            {/* <main style={{ textAlign: "center" }}> */}
+                <form className="entry__form" onSubmit={handleRegister}>
+                    <h2 className="add_baby_title">Add New Baby</h2>
+                    <fieldset>
+                        <label htmlFor="name"> Baby's Name </label>
+                        <input className="input_field" onChange={addBabyProperties}
+                            type="text" id="name" className="form-control"
+                            placeholder="Enter baby's name" required autoFocus />
+                    </fieldset>
+                    <fieldset>
+                        <label htmlFor="picture"> Baby's picture </label>
+                        <input className="input_field" onChange={addBabyProperties}
+                            type="text" id="picture" className="form-control"
+                            placeholder="Picture URL" />
+                    </fieldset>
+                    <fieldset>
+                        <label htmlFor="birthday"> Birthday </label>
+                        <input className="input_field" onChange={addBabyProperties}
+                            type="date" id="birthday" className="form-control"
+                            placeholder="Baby's birthday" required />
+                    </fieldset>
+                    <fieldset>
+                        <button type="submit">Add New Baby</button>
+                    </fieldset>
+                </form>
+            {/* </main> */}
+        </article>
     )
 }

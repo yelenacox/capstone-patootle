@@ -3,14 +3,14 @@ import { useEffect, useState } from "react"
 export const NavMultipleBabies = () => {
 
     const currentUser = JSON.parse(localStorage.getItem("app_user"))
-    const [babyChoices, setBabyChoices] = useState([{}])
+    const [userBabies, setUserBabies] = useState([{}])
 
     useEffect(
         () => {
             fetch(`http://localhost:8088/userBabies/?userId=${currentUser.id}&_expand=baby`)
                 .then(response => response.json())
                 .then((data) => {
-                    setBabyChoices(data)
+                    setUserBabies(data)
                 })
         }, []
     )
@@ -19,21 +19,22 @@ export const NavMultipleBabies = () => {
         <>
             <article className="selected_baby">
                 <section>
-                    <div className="select-group">
-                        <label htmlFor="baby_choice">Baby</label>
+                    <div className="select-group navbar__item__right">
+                        <label htmlFor="baby_choice">Baby </label>
                         <select className="baby_choice"
-                            value={babyChoices?.babyId}
+                            value={userBabies.babyId}
                             required
-                            onChange={
-                                (evt) => {
-                                    const copy = { ...babyChoices }
-                                    copy.userBabyId = parseInt(evt.target.value)
-                                    setBabyChoices(copy)
-                                }} >
+                            // onChange={
+                            //     (evt) => {
+                            //         const copy = { ...babyChoices }
+                            //         copy.userBabyId = parseInt(evt.target.value)
+                            //         setUserBabies(copy)
+                            //     }} 
+                                >
                             {
-                                babyChoices.map((userBaby) => {
+                                userBabies.map((userBaby) => {
                                     return <>
-                                    <option className="baby_option" value="0"><img className="baby_image" src={userBaby?.baby?.picture}/> {userBaby?.baby?.name}</option>
+                                    <option key={`userBaby--${userBaby.id}`}className="baby_option" value="0"><img className="baby_image" src={userBaby?.baby?.picture}/> {userBaby?.baby?.name}</option>
                                     </>
                                 })
                             }
