@@ -1,34 +1,13 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { Entry } from "./Entry"
 import "./EntryForm.css"
 
-export const EntryEditSamePage = ({entryObj}) => {
-    const [entry, updateEntry] = useState({
-        entryType: "",
-        description: "",
-        dateTime: ""
-    })
+export const EntryEditSamePage = ({ setEdit, entryObj, getAllEntries }) => {
+    const [entry, updateEntry] = useState(entryObj)
 
-    const [saveButton, setSave] = useState(false)
-
-    useEffect(
-        () => {},
-        [saveButton]
-    )
-
-
-    const navigate = useNavigate()
-
-    useEffect(() => {
-        fetch(`http://localhost:8088/entries/${entryObj.id}`)
-            .then(response => response.json())
-            .then((data) => {
-                updateEntry(data)
-            })
-    }, [])
-
-    const handleSaveButtonClick = (event) => {
-        event.preventDefault()
+    const handleSaveButtonClick = (clickEvent) => {
+        clickEvent.preventDefault()
         return fetch(`http://localhost:8088/entries/${entryObj.id}`, {
             method: "PUT",
             headers: {
@@ -37,16 +16,18 @@ export const EntryEditSamePage = ({entryObj}) => {
             body: JSON.stringify(entry)
         })
             .then(response => response.json())
-            .then((data) => {updateEntry(data)})
-            .then(() => {
-                navigate("/entries")
+            .then((data) => {
+                updateEntry(data);
+                getAllEntries();
             })
+            .then(setEdit(false))
     }
 
-    return <><article className="edit_entries">
-        <section>
-            <form className="edit_entry_form">
-                
+
+    return <>
+        <article className="edit_entries">
+            <section>
+                <form className="edit_entry_form">
                     <div className="form-group">
                         <label htmlFor="entry_type">Entry Type</label>
                         <select className="entry_type"
@@ -65,7 +46,7 @@ export const EntryEditSamePage = ({entryObj}) => {
                             <option value="Liquids">Liquids</option>
                         </select>
                     </div>
-                
+
                     <div className="form-group">
                         <label htmlFor="date_time">Date & Time</label>
                         <input
@@ -82,6 +63,7 @@ export const EntryEditSamePage = ({entryObj}) => {
                             }
                         />
                     </div>
+
                     <div className="form-group">
                         <label htmlFor="description">Description</label>
                         <textarea
@@ -98,14 +80,16 @@ export const EntryEditSamePage = ({entryObj}) => {
                                 }
                             }
                         >{entry.description}</textarea>
-                    </div>                
-                <button
-                    onClick={(clickEvent) => handleSaveButtonClick (clickEvent)}
-                    className="button_edit">
-                    Save Edits
-                </button>
-            </form>
-        </section>
-    </article></>
+                    </div>
+
+                    <button
+                        onClick={handleSaveButtonClick}
+                        className="button_edit">
+                        Save Edits
+                    </button>
+
+                </form>
+            </section>
+        </article></>
 
 }

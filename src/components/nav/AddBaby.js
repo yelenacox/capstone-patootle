@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import "./EntryForm.css"
+import "./NavBar.css"
 
 export const AddBaby = () => {
 
@@ -72,33 +72,33 @@ export const AddBaby = () => {
     }
 
     return (
-        <article className="entries_form">
-            {/* <main style={{ textAlign: "center" }}> */}
-                <form className="entry__form" onSubmit={handleRegister}>
+        <article className="babies_form">
+            <section className="baby_section">
+                <form className="baby_form" onSubmit={handleRegister}>
                     <h2 className="add_baby_title">Add New Baby</h2>
                     <fieldset>
                         <label htmlFor="name"> Baby's Name </label>
                         <input className="input_field" onChange={addBabyProperties}
-                            type="text" id="name" className="form-control"
+                            type="text" id="name"
                             placeholder="Enter baby's name" required autoFocus />
                     </fieldset>
                     <fieldset>
                         <label htmlFor="picture"> Baby's picture </label>
                         <input className="input_field" onChange={addBabyProperties}
-                            type="text" id="picture" className="form-control"
+                            type="text" id="picture"
                             placeholder="Picture URL" />
                     </fieldset>
                     <fieldset>
                         <label htmlFor="birthday"> Birthday </label>
                         <input className="input_field" onChange={addBabyProperties}
-                            type="date" id="birthday" className="form-control"
+                            type="date" id="birthday"
                             placeholder="Baby's birthday" required />
                     </fieldset>
                     <fieldset>
                         <button type="submit">Add New Baby</button>
                     </fieldset>
                 </form>
-            {/* </main> */}
+            </section>
         </article>
     )
 }

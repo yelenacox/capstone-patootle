@@ -14,6 +14,14 @@ export const EntryList = () => {
     const currentUser = JSON.parse(localStorage.getItem("app_user"))
     // const currentUser = JSON.parse(localStorage.getItem("app_user"))
 
+    const getAllEntries = () => {
+        fetch(`http://localhost:8088/entries?_expand=userBaby`)
+        .then(response => response.json())
+        .then((entryArray) => {
+            setEntries(entryArray)
+        })
+    }
+
     useEffect(
         () => {
             fetch(`http://localhost:8088/entries?_expand=userBaby`)
@@ -76,6 +84,7 @@ export const EntryList = () => {
                         currentUser={currentUser}
                         entry={entry}
                         setEntries={setEntries}
+                        getAllEntries={getAllEntries}
                     />
                 )
             }

@@ -19,11 +19,12 @@ export const NavSingleBaby = () => {
     )
 
     return (
-        <>
+        <><div className="baby_choice">
             <li className="navbar__item active navbar__item__right">
                 <img className="nav_baby_image" src={babyChoices[0]?.baby?.picture} />
             </li>
             <li className="navbar__item active navbar__item__right nav_baby_name">{babyChoices[0]?.baby?.name}</li>
+            </div>
 
         </>)
 }
