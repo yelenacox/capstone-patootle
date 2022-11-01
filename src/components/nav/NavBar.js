@@ -20,8 +20,8 @@ export const NavBar = () => {
                     <Link className="navbar__link" to="/add_baby">add baby</Link>
                 </li></div>
             <div className="navbar__right">
-                <NavBabyChoice />
-                <li className="navbar__item active navbar__item__right">
+               <div className="nav_baby"><NavBabyChoice /></div>
+                <div className="nav_div_right"><li className="navbar__item active navbar__item__right">
                     <Link className="navbar__link" to="/profile">profile</Link>
                 </li>
                 {
@@ -31,7 +31,7 @@ export const NavBar = () => {
                             navigate("/", { replace: true })
                         }}>logout</Link>
                     </li>
-                }</div>
+                }</div></div>
         </ul>
     )
 }

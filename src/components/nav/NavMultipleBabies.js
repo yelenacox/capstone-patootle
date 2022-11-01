@@ -34,7 +34,9 @@ export const NavMultipleBabies = () => {
                             {
                                 userBabies.map((userBaby) => {
                                     return <>
-                                    <option key={`userBaby--${userBaby.id}`}className="baby_option" value="0"><img className="baby_image" src={userBaby?.baby?.picture}/> {userBaby?.baby?.name}</option>
+                                    <option key={`userBaby--${userBaby.id}`}className="baby_option" value="0">
+                                        {/* <img className="baby_image" src={userBaby?.baby?.picture}/>  */}
+                                        {userBaby?.baby?.name}</option>
                                     </>
                                 })
                             }

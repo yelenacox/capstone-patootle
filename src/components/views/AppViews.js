@@ -1,6 +1,5 @@
 import { Outlet, Route, Routes } from "react-router-dom";
-import { AddBaby } from "../entries/AddBaby";
-import { RegisterBaby } from "../auth/RegisterBaby";
+import { AddBaby } from "../nav/AddBaby";
 import { EntryEdit } from "../entries/EntryEdit";
 import { EntryEditSamePage } from "../entries/EntryEditSamePage";
 import { EntryForm } from "../entries/EntryForm";
@@ -12,7 +11,7 @@ export const AppViews = () => {
         <Routes>
             <Route path="/" element={
                 <>
-                 
+
                     <Outlet />
                 </>
             }>

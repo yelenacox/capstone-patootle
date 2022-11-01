@@ -1,18 +1,9 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from 'react-router-dom'
-import { EntryEdit } from "./EntryEdit"
 import { EntryEditSamePage } from "./EntryEditSamePage"
-import { EntryList } from "./EntryList"
 
-export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries }) => {
-    const navigate = useNavigate()
+export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries, getAllEntries }) => {
     const [editButton, setEdit] = useState(false)
     const [toggle, setToggle] = useState(false)
-
-    useEffect(
-        () => {},
-        [editButton]
-    )
 
     useEffect(
         () => {
@@ -39,9 +30,7 @@ export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries }) =
         { currentUser.admin && editButton === false ? <>
             <button
                 className="entry_button"
-                onClick={() => setEdit(!editButton)
-                    // navigate(`${entry.id}/edit`)               
-                
+                onClick={() => setEdit(!editButton)                
                 }>
                     Edit
             </button>
@@ -56,7 +45,7 @@ export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries }) =
 
 
 
-       {editButton ? <EntryEditSamePage entryObj={entry}/> :(<>
+       {editButton ? <EntryEditSamePage setEdit={setEdit} entryObj={entry} getAllEntries={getAllEntries}/> :(<>
         <div className="entry_div">{entry.entryType}</div>
        <div className="entry_div">{entry.dateTime}</div>
         <div className="entry_div">{entry.description}</div>
