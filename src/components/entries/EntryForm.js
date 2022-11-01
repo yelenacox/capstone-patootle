@@ -51,7 +51,7 @@ export const EntryForm = () => {
 
 
     return <>
-        <article className="entries">
+        <article className="entries_form">
 
             <section>
                 <form className="entry_form">
@@ -79,7 +79,7 @@ export const EntryForm = () => {
                     </fieldset>
                     <fieldset>
                         <div className="form-group">
-                            <label htmlFor="entry_type">Entry Type</label>
+                            <label htmlFor="entry_type">Entry Type  </label>
                             <select className="entry_type"
                                 value={entry.entryType}
                                 onChange={

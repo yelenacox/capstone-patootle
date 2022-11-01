@@ -1,6 +1,19 @@
 .entries {
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    background-color: #e5f1e6;
+    border: 1px solid #453945;
+    padding: 20px;
+    font-size: 16px;
+}
+
+.entries_form {
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    background-color: rgb(253, 254, 248, 0.7);
+    padding: 20px;
+    border: 1px solid #453945;
 }
 
 .entry_form {
@@ -8,13 +21,20 @@
     padding: 20px 90px;
     font-size: 16px;
     max-width: fit-content;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-    background-color: rgb(253, 254, 248, 0.8);
-    margin: 10% 0 0 20%;
+    box-shadow: 0px 3px 10px rgb(0 0 0 / 0.3);
+    background-color: #E0EEE7;
+    border: 1px solid #453945;
+    border-radius: 30px;
+    margin: 20px 0 0 20px;
     }
 
 .entry {
-    padding-bottom: 2rem;
+    padding: 12px;
+    margin-bottom: 2rem;
+    background-color: rgb(253, 254, 248, 0.8);
+    line-height: 2rem;
+    box-shadow: 0px 3px 10px rgb(0 0 0 / 0.2);
+    border: 1px dashed #453945;
 }
 
 .input_field {

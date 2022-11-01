@@ -3,6 +3,7 @@
     flex-flow: row wrap;
     background-color: rgb(253, 254, 248, 0.8);
     margin: 0;
+    margin-bottom: 30px;
     padding: 0;
     border: 1px solid #453945;
     align-items: center;

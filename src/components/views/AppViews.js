@@ -1,4 +1,5 @@
 import { Outlet, Route, Routes } from "react-router-dom";
+import { AddBaby } from "../entries/AddBaby";
 import { RegisterBaby } from "../auth/RegisterBaby";
 import { EntryEdit } from "../entries/EntryEdit";
 import { EntryEditSamePage } from "../entries/EntryEditSamePage";
@@ -15,7 +16,7 @@ export const AppViews = () => {
                     <Outlet />
                 </>
             }>
-                <Route path="/add_baby" element={<RegisterBaby />} />
+                <Route path="/add_baby" element={<AddBaby />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/create" element={<EntryForm />} />
                 <Route path="/entries" element={<EntryList />} />
