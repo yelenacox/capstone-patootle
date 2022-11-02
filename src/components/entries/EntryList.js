@@ -24,7 +24,7 @@ export const EntryList = () => {
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/entries?_expand=userBaby`)
+            fetch(`http://localhost:8088/entries?_expand=userBaby&_sort=dateTime&_order=desc`)
                 .then(response => response.json())
                 .then((data) => {
                     setEntries(data)
@@ -59,6 +59,7 @@ export const EntryList = () => {
 
         <h2>Entries</h2>
         <label htmlFor="baby_name">Baby:</label>
+        
         {userBabies.map(
             (userBaby) => {
                     return <><input

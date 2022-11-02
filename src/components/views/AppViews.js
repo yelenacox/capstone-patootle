@@ -9,12 +9,8 @@ import { Profile } from "../profile/Profile";
 export const AppViews = () => {
     return (
         <Routes>
-            <Route path="/" element={
-                <>
-
-                    <Outlet />
-                </>
-            }>
+            <Route path="/">
+                <Route index element={<EntryForm />} />
                 <Route path="/add_baby" element={<AddBaby />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/create" element={<EntryForm />} />

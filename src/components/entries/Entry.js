@@ -45,7 +45,8 @@ export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries, get
 
 
 
-       {editButton ? <EntryEditSamePage setEdit={setEdit} entryObj={entry} getAllEntries={getAllEntries}/> :(<>
+       {editButton ? <EntryEditSamePage setEdit={setEdit} entryObj={entry} getAllEntries={getAllEntries}/> :(
+         <>
         <div className="entry_div">{entry.entryType}</div>
        <div className="entry_div">{entry.dateTime}</div>
         <div className="entry_div">{entry.description}</div>

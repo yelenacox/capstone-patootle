@@ -141,5 +141,7 @@ export const EntryForm = () => {
                     </button>
                 </form>
             </section>
-        </article></>
+           <div className="side_picture"><img className="entry_form_picture" src="https://i.ibb.co/hcPvyXc/entry-form-picture.png"/></div>
+        </article>
+        </>
 }

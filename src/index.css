@@ -4,8 +4,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: white;
   background-image: url("./images/background.jpg");
-  background-repeat: no-repeat;
-   background-size:cover;
+  background-size: cover;
 }
 
 
