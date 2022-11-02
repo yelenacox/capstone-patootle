@@ -4,6 +4,10 @@ export const NavMultipleBabies = () => {
 
     const currentUser = JSON.parse(localStorage.getItem("app_user"))
     const [userBabies, setUserBabies] = useState([{}])
+    const [chosenBaby, setChosenBaby] = useState({})
+
+
+
 
     useEffect(
         () => {
@@ -14,6 +18,9 @@ export const NavMultipleBabies = () => {
                 })
         }, []
     )
+
+    // useEffect(() => { }, [userBabies, chosenBaby])
+
 
     return (
         <>
@@ -26,9 +33,9 @@ export const NavMultipleBabies = () => {
                             required
                             // onChange={
                             //     (evt) => {
-                            //         const copy = { ...babyChoices }
+                            //         const copy = { ...userBabies }
                             //         copy.userBabyId = parseInt(evt.target.value)
-                            //         setUserBabies(copy)
+                            //         setChosenBaby(copy)
                             //     }} 
                                 >
                             {
