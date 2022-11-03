@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react"
 
-export const NavMultipleBabies = ({ userBabies, setUserBabies }) => {
+export const NavMultipleBabies = ({userBabies, setUserBabies}) => {
 
     const currentUser = JSON.parse(localStorage.getItem("app_user"))
-    const [chosenBaby, setChosenBaby] = useState({})
 
     useEffect(
         () => {
@@ -15,13 +14,10 @@ export const NavMultipleBabies = ({ userBabies, setUserBabies }) => {
         }, []
     )
 
-    // useEffect(() => { }, [userBabies, chosenBaby])
-
     return (
         <>
             <article className="selected_baby">
                 <section>
-                    {/* <img className="baby_image" src={chosenBaby?.baby?.picture} /> */}
                     <div className="select-group navbar__item__right">
                         <label htmlFor="baby_choice" className="baby_choice_title">Select Baby </label>
                         <select className="baby_choice"
@@ -32,14 +28,13 @@ export const NavMultipleBabies = ({ userBabies, setUserBabies }) => {
                             //         const copy = { ...userBabies }
                             //         copy.babyId = parseInt(evt.target.value)
                             //         setChosenBaby(copy)
-                            //     }}
-                        >
+                            //     }} 
+                                >
                             {
                                 userBabies.map((userBaby) => {
                                     return <>
-                                        <option key={`userBaby--${userBaby.id}`} className="baby_option" value="0">
-                                            {/* <img className="baby_image" src={userBaby?.baby?.picture}/> */}
-                                            {userBaby?.baby?.name}</option>
+                                    <option key={`userBaby--${userBaby.id}`}className="baby_option" value="0">
+                                        {userBaby?.baby?.name}</option>
                                     </>
                                 })
                             }

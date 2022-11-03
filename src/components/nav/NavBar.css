@@ -17,6 +17,7 @@
 
 .navbar__link {
     cursor: pointer;
+    color: #66567e;
 }
 
 .navbar__link:link {
@@ -73,9 +74,10 @@
 .baby_choice {
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
-.baby_choice_title {
+.baby_choice_title,.nav_baby_name {
     font-size: small;
 }
 
