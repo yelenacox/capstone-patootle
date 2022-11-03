@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom"
 import { EntryEditSamePage } from "./EntryEditSamePage"
 
 export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries, getAllEntries }) => {
@@ -47,9 +48,13 @@ export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries, get
 
        {editButton ? <EntryEditSamePage setEdit={setEdit} entryObj={entry} getAllEntries={getAllEntries}/> :(
          <>
+         {/* {
+            entry === "" ? <Link className="entry_link" to="/create">Write an entry!</Link> : <> */}
+         
         <div className="entry_div">{entry.entryType}</div>
        <div className="entry_div">{entry.dateTime}</div>
         <div className="entry_div">{entry.description}</div>
+        {/* </>} */}
         </>)}
 
     </section>

@@ -35,7 +35,7 @@ export const EntryForm = () => {
             description: entry.description,
             dateTime: entry.dateTime
         }
-        return fetch(`http://localhost:8088/entries?_expand=userBaby/?userBabyId=1`, {
+        return fetch(`http://localhost:8088/entries`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -141,7 +141,7 @@ export const EntryForm = () => {
                     </button>
                 </form>
             </section>
-           <div className="side_picture"><img className="entry_form_picture" src="https://i.ibb.co/hcPvyXc/entry-form-picture.png"/></div>
+           <div className="side_picture"><img className="entry_form_picture" src="https://i.ibb.co/BGKn1nL/bottle-diaper-pacifier.png"/></div>
         </article>
         </>
 }

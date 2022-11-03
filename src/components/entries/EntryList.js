@@ -15,7 +15,7 @@ export const EntryList = () => {
     // const currentUser = JSON.parse(localStorage.getItem("app_user"))
 
     const getAllEntries = () => {
-        fetch(`http://localhost:8088/entries?_expand=userBaby`)
+        fetch(`http://localhost:8088/entries?_expand=userBaby&_sort=dateTime&_order=desc`)
         .then(response => response.json())
         .then((entryArray) => {
             setEntries(entryArray)
