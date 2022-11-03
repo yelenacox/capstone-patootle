@@ -75,6 +75,10 @@
     flex-direction: column;
 }
 
+.baby_choice_title {
+    font-size: small;
+}
+
 .babies_form {
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     background-color: rgb(253, 254, 248, 0.7);

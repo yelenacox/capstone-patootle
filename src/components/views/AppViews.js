@@ -6,12 +6,12 @@ import { EntryForm } from "../entries/EntryForm";
 import { EntryList } from "../entries/EntryList";
 import { Profile } from "../profile/Profile";
 
-export const AppViews = () => {
+export const AppViews = ({userBabies, setUserBabies}) => {
     return (
         <Routes>
             <Route path="/">
                 <Route index element={<EntryForm />} />
-                <Route path="/add_baby" element={<AddBaby />} />
+                <Route path="/add_baby" element={<AddBaby userBabies={userBabies} setUserBabies={setUserBabies} />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/create" element={<EntryForm />} />
                 <Route path="/entries" element={<EntryList />} />
