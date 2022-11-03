@@ -3,7 +3,7 @@ import { NavBabyChoice } from "./NavBabyChoice"
 import "./NavBar.css"
 
 
-export const NavBar = () => {
+export const NavBar = ({userBabies, setUserBabies}) => {
     const navigate = useNavigate()
 
     return (
@@ -20,7 +20,7 @@ export const NavBar = () => {
                     <Link className="navbar__link" to="/add_baby">add baby</Link>
                 </li></div>
             <div className="navbar__right">
-               <div className="nav_baby"><NavBabyChoice /></div>
+               <div className="nav_baby"><NavBabyChoice userBabies={userBabies} setUserBabies={setUserBabies}/></div>
                 <div className="nav_div_right"><li className="navbar__item active navbar__item__right">
                     <Link className="navbar__link" to="/profile">profile</Link>
                 </li>
