@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export const NavMultipleBabies = ({userBabies, setUserBabies}) => {
+export const NavMultipleBabies = ({userBabies, setUserBabies, selectedUserBaby, setSelectedUserBaby}) => {
 
     const currentUser = JSON.parse(localStorage.getItem("app_user"))
 
@@ -23,17 +23,15 @@ export const NavMultipleBabies = ({userBabies, setUserBabies}) => {
                         <select className="baby_choice"
                             value={userBabies.babyId}
                             required
-                            // onChange={
-                            //     (evt) => {
-                            //         const copy = { ...userBabies }
-                            //         copy.babyId = parseInt(evt.target.value)
-                            //         setChosenBaby(copy)
-                            //     }} 
+                            onChange={
+                                (e) => {
+                                    setSelectedUserBaby(e.target.value)
+                                }} 
                                 >
                             {
                                 userBabies.map((userBaby) => {
                                     return <>
-                                    <option key={`userBaby--${userBaby.id}`}className="baby_option" value="0">
+                                    <option key={`userBaby--${userBaby.id}`}className="baby_option" value={userBaby.id} selected={selectedUserBaby===userBaby.id}>
                                         {userBaby?.baby?.name}</option>
                                     </>
                                 })
