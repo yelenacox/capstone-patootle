@@ -28,8 +28,8 @@ export const BabyList = () => {
             
             return <section key={`userBaby--${userBaby.id}`} className="baby">
                 {userBaby?.baby?.picture !== "" ? 
-                <img class="baby_image" src={userBaby?.baby?.picture}/> 
-                : <img class="baby_image" src="https://i.ibb.co/VQs2j8B/baby-icon.jpg"/>}
+                <img className="baby_image" src={userBaby?.baby?.picture}/> 
+                : <img className="baby_image" src="https://i.ibb.co/VQs2j8B/baby-icon.jpg"/>}
                 
                 <div>{userBaby?.baby?.name}</div>
                 <div>{userBaby?.baby?.birthday}</div>

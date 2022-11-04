@@ -31,7 +31,7 @@ export const NavMultipleBabies = ({userBabies, setUserBabies, selectedUserBaby, 
                             {
                                 userBabies.map((userBaby) => {
                                     return <>
-                                    <option key={`userBaby--${userBaby.id}`}className="baby_option" value={userBaby.id} selected={selectedUserBaby===userBaby.id}>
+                                    <option key={`userBaby--${userBaby.id}`}className="baby_option" value={userBaby.id} defaultValue={selectedUserBaby===userBaby.id}>
                                         {userBaby?.baby?.name}</option>
                                     </>
                                 })

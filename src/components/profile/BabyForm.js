@@ -8,10 +8,9 @@ export const BabyForm = () => {
         birthday: ""
     })
 
-    const currentUser = JSON.parse(localStorage.getItem("app_user"))
     const [feedback, setFeedback] = useState("")
 
-    // const currentUser = JSON.parse(localStorage.getItem("app_user"))
+    const currentUser = JSON.parse(localStorage.getItem("app_user"))
   
     useEffect(() => {
         fetch(`http://localhost:8088/userBabies/?userId=${currentUser.id}&_expand=baby`)
