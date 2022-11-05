@@ -101,7 +101,7 @@ export const EntryForm = () => {
                     <fieldset>
                         <div className="form-group">
                             <label htmlFor="description">Description</label>
-                            <input
+                            <textarea
                                 required autoFocus
                                 type="text"
                                 className="form-control"
@@ -113,7 +113,7 @@ export const EntryForm = () => {
                                         update(copy)
                                     }
                                 }
-                            />
+                            ></textarea>
                         </div>
                     </fieldset>
                     <fieldset>
