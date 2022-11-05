@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react"
 
-export const BabyForm = () => {
+export const BabyForm = ({setEdit, babyObj}) => {
 
-    const [profile, updateProfile] = useState({
-        name: "",
-        picture: "",
-        birthday: ""
-    })
+    const [profile, updateProfile] = useState(babyObj)
 
     const currentUser = JSON.parse(localStorage.getItem("app_user"))
     const [feedback, setFeedback] = useState("")
@@ -33,7 +29,7 @@ export const BabyForm = () => {
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
 
-        return fetch(`http://localhost:8088/userBabies/?userId=${profile.id}&_expand=baby`, {
+        return fetch(`http://localhost:8088/userBabies/?userId=${babyObj.id}&_expand=baby`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
