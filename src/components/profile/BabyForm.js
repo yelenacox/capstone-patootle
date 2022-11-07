@@ -1,35 +1,13 @@
 import { useEffect, useState } from "react"
 
-export const BabyForm = ({setEdit, babyObj}) => {
+export const BabyForm = ({ setEdit, userBabyObj }) => {
 
-    const [profile, updateProfile] = useState(babyObj)
+    const [profile, updateProfile] = useState(userBabyObj)
 
-    const currentUser = JSON.parse(localStorage.getItem("app_user"))
-    const [feedback, setFeedback] = useState("")
+    const handleSaveButtonClick = (clickEvent) => {
+        clickEvent.preventDefault()
 
-    // const currentUser = JSON.parse(localStorage.getItem("app_user"))
-  
-    useEffect(() => {
-        fetch(`http://localhost:8088/userBabies/?userId=${currentUser.id}&_expand=baby`)
-            .then(response => response.json())
-            .then((data) => {
-                const babyObj = data
-                updateProfile(babyObj)
-            })
-    }, [])
-    
-    useEffect(() => {
-        if (feedback !== "") {
-
-            setTimeout(() => setFeedback(""), 2000);
-        }
-    }, [feedback])
-
-  
-    const handleSaveButtonClick = (event) => {
-        event.preventDefault()
-
-        return fetch(`http://localhost:8088/userBabies/?userId=${babyObj.id}&_expand=baby`, {
+        return fetch(`http://localhost:8088/userBabies/${userBabyObj.id}?_expand=baby`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -37,68 +15,62 @@ export const BabyForm = ({setEdit, babyObj}) => {
             body: JSON.stringify(profile)
         })
             .then(response => response.json())
-            .then(() => {
-                setFeedback("Baby profile successfully saved")
+            .then((data) => {
+                updateProfile(data);
             })
+            .then(setEdit(false))
     }
 
     return (
         <form className="profile">
-            <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
-                {feedback}
+            <div className="form-group">
+                <label htmlFor="picture">Picture:</label>
+                <input type="text"
+                    className="form-control"
+                    placeholder={profile?.baby?.picture}
+                    value={profile?.baby?.picture}
+                    onChange={
+                        (evt) => {
+                            const copy = { ...profile }
+                            copy.picture = evt.target.value
+                            updateProfile(copy)
+                        }
+                    } />
             </div>
-            <h2 className="profile__title">Baby Profile</h2>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="name">Name:</label>
-                    <input
-                        required autoFocus
-                        type="text"
-                        className="form-control"
-                        value={profile.name}
-                        onChange={
-                            (evt) => {
-                                const copy = { ...profile }
-                                copy.name = evt.target.value
-                                updateProfile(copy)
-                            }
-                        } />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="picture">Picture:</label>
-                    <input type="text"
-                        className="form-control"
-                        value={profile.picture}
-                        onChange={
-                            (evt) => {
-                                const copy = { ...profile }
-                                copy.picture = evt.target.value
-                                updateProfile(copy)
-                            }
-                        } />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
-                    <label htmlFor="birthday">Baby's Birthday:</label>
-                    <input type="date"
-                        className="form-control"
-                        value={profile.birthday}
-                        onChange={
-                            (evt) => {
-                                const copy = { ...profile }
-                                copy.birthday = evt.target.value
-                                updateProfile(copy)
-                            }
-                        } />
-                </div>
-            </fieldset>
+            <div className="form-group">
+                <label htmlFor="name">Name:</label>
+                <input
+                    required autoFocus
+                    type="text"
+                    className="form-control"
+                    placeholder={profile?.baby?.name}
+                    value={profile?.baby?.name}
+                    onChange={
+                        (evt) => {
+                            const copy = { ...profile }
+                            copy.name = evt.target.value
+                            updateProfile(copy)
+                        }
+                    } />
+            </div>
+            <div className="form-group">
+                <label htmlFor="birthday">Baby's Birthday:</label>
+                <input type="date"
+                    className="form-control"
+                    // placeholder={profile?.baby?.birthday}
+                    value={profile?.baby?.birthday}
+                    onChange={
+                        (evt) => {
+                            const copy = { ...profile }
+                            copy.birthday = evt.target.value
+                            updateProfile(copy)
+                        }
+                    } />
+            </div>
             <button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                 className="btn btn-primary">
-                Update Profile
+                Save Profile
             </button>
         </form>
     )

@@ -78,19 +78,19 @@ export const AddBaby = ({ userBabies, setUserBabies }) => {
                 <form className="baby_form" onSubmit={handleRegister}>
                     <h2 className="add_baby_title">Add New Baby</h2>
                     <fieldset>
-                        <label htmlFor="name"> Baby's Name </label>
+                        <label htmlFor="name">Name  </label>
                         <input className="input_field" onChange={addBabyProperties}
                             type="text" id="name"
                             placeholder="Enter baby's name" required autoFocus />
                     </fieldset>
                     <fieldset>
-                        <label htmlFor="picture"> Baby's picture </label>
+                        <label htmlFor="picture">Picture  </label>
                         <input className="input_field" onChange={addBabyProperties}
                             type="text" id="picture"
                             placeholder="Picture URL" />
                     </fieldset>
                     <fieldset>
-                        <label htmlFor="birthday"> Birthday </label>
+                        <label htmlFor="birthday">Birthday  </label>
                         <input className="input_field" onChange={addBabyProperties}
                             type="date" id="birthday"
                             placeholder="Baby's birthday" required />

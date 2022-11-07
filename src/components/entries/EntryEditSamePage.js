@@ -29,7 +29,6 @@ export const EntryEditSamePage = ({ setEdit, entryObj, getAllEntries }) => {
             <section>
                 <form className="edit_entry_form">
                     <div className="form-group">
-                        <label htmlFor="entry_type">Entry Type</label>
                         <select className="entry_type"
                             value={entry.entryType}
                             onChange={
@@ -48,7 +47,6 @@ export const EntryEditSamePage = ({ setEdit, entryObj, getAllEntries }) => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="date_time">Date & Time</label>
                         <input
                             required autoFocus
                             type="datetime-local"
@@ -65,7 +63,6 @@ export const EntryEditSamePage = ({ setEdit, entryObj, getAllEntries }) => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="description">Description</label>
                         <textarea
                             required autoFocus
                             type="text"

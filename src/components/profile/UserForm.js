@@ -48,6 +48,7 @@ export const UserForm = () => {
             <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
                 {feedback}
             </div>
+            <div className="user-profile">
             <h2 className="profile__title">User Profile</h2>
             <fieldset>
                 <div className="form-group">
@@ -101,6 +102,7 @@ export const UserForm = () => {
                 className="btn btn-primary">
                 Update Profile
             </button>
+        </div>
         </form>
     )
 }
