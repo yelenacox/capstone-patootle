@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export const NavSingleBaby = ({userBabies, setUserBabies}) => {
+export const NavSingleBaby = ({userBabies, setUserBabies, selectedUserBaby, setSelectedUserBaby}) => {
 
     const currentUser = JSON.parse(localStorage.getItem("app_user"))
 
@@ -11,6 +11,7 @@ export const NavSingleBaby = ({userBabies, setUserBabies}) => {
                 .then(response => response.json())
                 .then((data) => {
                     setUserBabies(data)
+                    // setSelectedUserBaby(data)
                 })
         
         }, []

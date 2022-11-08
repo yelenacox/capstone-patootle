@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { EntryEditSamePage } from "./EntryEditSamePage"
 
-export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries, getAllEntries }) => {
+export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries, getAllEntries, selectedUserBaby}) => {
     const [editButton, setEdit] = useState(false)
     const [toggle, setToggle] = useState(false)
 

@@ -2,9 +2,8 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./EntryForm.css"
 
-export const EntryForm = () => {
+export const EntryForm = ({selectedUserBaby}) => {
     const [entry, update] = useState({
-        userBabyId: 0,
         entryType: "",
         description: "",
         date: "",
@@ -30,7 +29,7 @@ export const EntryForm = () => {
         event.preventDefault()
 
         const entryToSendToAPI = {
-            userBabyId: entry.userBabyId,
+            userBabyId: parseInt(selectedUserBaby),
             entryType: entry.entryType,
             description: entry.description,
             dateTime: entry.dateTime
@@ -49,34 +48,12 @@ export const EntryForm = () => {
 
     }
 
-
     return <>
         <article className="entries_form">
 
             <section>
                 <form className="entry_form">
                     <h2 className="entry_form_title">New Entry</h2>
-                    <fieldset>
-                        <div className="form-group">
-                            <label htmlFor="baby_name">Baby:</label>
-                            {filteredBabies.map(
-                                (userBaby) => {
-                                    return <><input
-                                        key={`entry--${userBaby.id}`}
-                                        type="radio"
-                                        value={userBaby?.babyId}
-                                        name={userBaby?.baby?.name}
-                                        required
-                                        checked={entry.userBabyId === userBaby?.babyId}
-                                        onChange={
-                                            (e) => {
-                                                update({ ...entry, userBabyId: parseInt(e.target.value) })
-                                            }
-                                        } />
-                                        <label for={userBaby?.baby?.name}>{userBaby?.baby?.name}</label></>
-                                })}
-                        </div>
-                    </fieldset>
                     <fieldset>
                         <div className="form-group">
                             <label htmlFor="entry_type">Entry Type  </label>

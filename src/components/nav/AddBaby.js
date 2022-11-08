@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./NavBar.css"
 
-export const AddBaby = ({ userBabies, setUserBabies }) => {
+export const AddBaby = ({ userBabies, setUserBabies, setSelectedUserBaby }) => {
 
     const [baby, setBaby] = useState({
         name: "",
@@ -52,10 +52,11 @@ export const AddBaby = ({ userBabies, setUserBabies }) => {
                     .then(res => res.json())
                     .then(() => {
                         fetch(`http://localhost:8088/userBabies/?userId=${currentUser.id}&_expand=baby`).then(response => response.json())
-                        .then((data) => {
-                            setUserBabies(data)
-                            navigate('/');
-                        })
+                            .then((data) => {
+                                setUserBabies(data)
+                                setSelectedUserBaby(data[0].id)
+                                navigate("/");
+                            })
                     })
             })
     }

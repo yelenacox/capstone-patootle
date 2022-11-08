@@ -12,31 +12,46 @@ import { Authorized } from "./components/views/Authorized"
 
 export const App = () => {
 
-const [userBabies, setUserBabies] = useState([])
+	const [userBabies, setUserBabies] = useState([])
+	const [selectedUserBaby, setSelectedUserBaby] = useState(undefined)
+	const currentUser = JSON.parse(localStorage.getItem("app_user"))
 
-useEffect(
-	() => {
-		fetch(`http://localhost:8088/userBabies`)
-			.then(res => res.json())
-			.then((data) => {
-				setUserBabies(data)
+	useEffect(
+		() => {
+			fetch(`http://localhost:8088/userBabies`)
+				.then(res => res.json())
+				.then((data) => {
+					setUserBabies(data)
+				})
+
+
+		}, []
+	)
+	if (currentUser && !selectedUserBaby) {
+		fetch(`http://localhost:8088/userBabies/?userId=${currentUser?.id}&_expand=baby`)
+			.then(response => response.json())
+			.then((array) => {
+				setSelectedUserBaby(array[0].id)
 			})
-	}, []
-)
+	}
+
 
 	return <Routes>
 		<Route path="/login" element={<Login />} />
 		<Route path="/register" element={<Register />} />
 		<Route path="/register_baby" element={<RegisterBaby />} />
-		
+
 
 
 		<Route path="*" element={
 			<Authorized>
 				<>
-					<NavBar userBabies={userBabies} setUserBabies={setUserBabies}/>
-					<AppViews userBabies={userBabies} setUserBabies={setUserBabies}/>
-					
+					<NavBar userBabies={userBabies} setUserBabies={setUserBabies} selectedUserBaby={selectedUserBaby} setSelectedUserBaby={setSelectedUserBaby}
+					/>
+
+					<AppViews userBabies={userBabies} setUserBabies={setUserBabies} selectedUserBaby={selectedUserBaby} setSelectedUserBaby={setSelectedUserBaby}
+					/>
+
 				</>
 			</Authorized>
 
