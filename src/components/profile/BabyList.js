@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { Baby } from "./Baby"
 import { BabyForm } from "./BabyForm"
 import "./Profile.css"
 
 export const BabyList = () => {
     const [userBabies, setBabies] = useState([])
-    const [buttonClick, setButton] = useState(false)
 
     const currentUser = JSON.parse(localStorage.getItem("app_user"))
 
@@ -34,6 +35,12 @@ export const BabyList = () => {
                 className="button_edit"
                 >Edit Baby Profile</button>
             </section> })
+        // userBabies.map(userBaby =>
+        //     <Baby
+        //     key={`userBaby--${userBaby.id}`}
+        //     userBaby={userBaby}
+        //     />
+        //      )
     }
     </article>
     
