@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
 import { BabyForm } from "./BabyForm"
 import "./Profile.css"
 
@@ -7,10 +6,7 @@ export const BabyList = () => {
     const [userBabies, setBabies] = useState([])
     const [buttonClick, setButton] = useState(false)
 
-    const navigate = useNavigate()
     const currentUser = JSON.parse(localStorage.getItem("app_user"))
-
-    // const currentUser = JSON.parse(localStorage.getItem("app_user"))
 
     useEffect(
         () => {

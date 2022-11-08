@@ -14,7 +14,6 @@ export const App = () => {
 
 	const [userBabies, setUserBabies] = useState([])
 	const [selectedUserBaby, setSelectedUserBaby] = useState(undefined)
-	console.log("BABY!!!!: \n\t\t", selectedUserBaby)
 	const currentUser = JSON.parse(localStorage.getItem("app_user"))
 
 	useEffect(
@@ -24,17 +23,17 @@ export const App = () => {
 				.then((data) => {
 					setUserBabies(data)
 				})
-				if (!selectedUserBaby) {
-					fetch(`http://localhost:8088/userBabies/?userId=${currentUser?.id}&_expand=baby`)
-						.then(response => response.json())
-						.then((array) => {
-							setSelectedUserBaby(array[0].babyId)
-						})
-				}
+
 
 		}, []
 	)
-
+	if (currentUser && !selectedUserBaby) {
+		fetch(`http://localhost:8088/userBabies/?userId=${currentUser?.id}&_expand=baby`)
+			.then(response => response.json())
+			.then((array) => {
+				setSelectedUserBaby(array[0].id)
+			})
+	}
 
 
 	return <Routes>
@@ -50,7 +49,7 @@ export const App = () => {
 					<NavBar userBabies={userBabies} setUserBabies={setUserBabies} selectedUserBaby={selectedUserBaby} setSelectedUserBaby={setSelectedUserBaby}
 					/>
 
-					<AppViews userBabies={userBabies} setUserBabies={setUserBabies} selectedUserBaby={selectedUserBaby}
+					<AppViews userBabies={userBabies} setUserBabies={setUserBabies} selectedUserBaby={selectedUserBaby} setSelectedUserBaby={setSelectedUserBaby}
 					/>
 
 				</>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { Entry } from "./Entry"
 import { EntryEdit } from "./EntryEdit"
 
-export const EntryList = ({selectedUserBaby}) => {
+export const EntryList = ({ selectedUserBaby }) => {
     const [entries, setEntries] = useState([])
     const [userBabies, setUserBabies] = useState([])
     // const [selectedUserBaby, setSelectedUserBaby] = useState([])
@@ -15,24 +15,20 @@ export const EntryList = ({selectedUserBaby}) => {
 
     const getAllEntries = () => {
         fetch(`http://localhost:8088/entries?_expand=userBaby&_sort=dateTime&_order=desc`)
-        .then(response => response.json())
-        .then((entryArray) => {
-            setEntries(entryArray)
-        })
+            .then(response => response.json())
+            .then((entryArray) => {
+                setEntries(entryArray)
+            })
     }
 
     useEffect(
         () => {
-            fetch(`http://localhost:8088/entries?_expand=userBaby&_sort=dateTime&_order=desc`)
-                .then(response => response.json())
-                .then((data) => {
-                    setEntries(data)
-                })
+            getAllEntries();
             fetch(`http://localhost:8088/userBabies?_expand=baby`)
                 .then(response => response.json())
                 .then((array) => {
                     setUserBabies(array.filter((userBaby) => userBaby.userId === currentUser.id))
-                    // setSelectedUserBaby(array[0].babyId)
+                    //setSelectedUserBaby(array[0].babyId)
                 })
 
         },
@@ -46,11 +42,25 @@ export const EntryList = ({selectedUserBaby}) => {
         ,
         [entries]
     )
-    useEffect(() => {
-        setFilteredBabyEntries(filteredUserEntries.filter(entry => entry.userBabyId === selectedUserBaby))
-    }, [selectedUserBaby, filteredUserEntries])
     // }
-
+    const filteredEntries = () => {
+        let entries;
+        if (userBabies.length > 1) {
+            entries = filteredUserEntries.filter(entry => entry.userBabyId === parseInt(selectedUserBaby))
+        }
+        else { entries = filteredUserEntries }
+        return entries.map(
+            (entry) => <Entry
+                key={`entry--${entry.id}`}
+                filteredBabyEntries={filteredBabyEntries}
+                currentUser={currentUser}
+                entry={entry}
+                setEntries={setEntries}
+                getAllEntries={getAllEntries}
+                selectedUserBaby={selectedUserBaby}
+            />
+        )
+    }
 
 
 
@@ -58,7 +68,7 @@ export const EntryList = ({selectedUserBaby}) => {
 
         <h2>Entries</h2>
         {/* <label htmlFor="baby_name">Baby:</label> */}
-        
+
         {/* {userBabies.map(
             (userBaby) => {
                     return <><input
@@ -76,18 +86,7 @@ export const EntryList = ({selectedUserBaby}) => {
                 
             })} */}
         <article className="entries">
-            {filteredBabyEntries
-                .map(
-                    (entry) => <Entry
-                        key={`entry--${entry.id}`}
-                        filteredBabyEntries={filteredBabyEntries}
-                        currentUser={currentUser}
-                        entry={entry}
-                        setEntries={setEntries}
-                        getAllEntries={getAllEntries}
-                        selectedUserBaby={selectedUserBaby}
-                    />
-                )
+            {filteredEntries()
             }
         </article>
     </>

@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import { Entry } from "./Entry"
+import { useState } from "react"
 import "./EntryForm.css"
 
 export const EntryEditSamePage = ({ setEdit, entryObj, getAllEntries }) => {
