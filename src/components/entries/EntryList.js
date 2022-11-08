@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { Entry } from "./Entry"
 import { EntryEdit } from "./EntryEdit"
 
-export const EntryList = () => {
+export const EntryList = ({selectedUserBaby}) => {
     const [entries, setEntries] = useState([])
     const [userBabies, setUserBabies] = useState([])
     const [selectedUserBaby, setSelectedUserBaby] = useState([])
@@ -58,9 +58,9 @@ export const EntryList = () => {
     return <>
 
         <h2>Entries</h2>
-        <label htmlFor="baby_name">Baby:</label>
+        {/* <label htmlFor="baby_name">Baby:</label> */}
         
-        {userBabies.map(
+        {/* {userBabies.map(
             (userBaby) => {
                     return <><input
                         key={`userBaby--${userBaby.id}`}
@@ -86,6 +86,7 @@ export const EntryList = () => {
                         entry={entry}
                         setEntries={setEntries}
                         getAllEntries={getAllEntries}
+                        selectedUserBaby={selectedUserBaby}
                     />
                 )
             }

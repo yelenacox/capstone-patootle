@@ -27,6 +27,7 @@ export const NavBar = ({userBabies, setUserBabies}) => {
                 {
                     <li className="navbar__item active">
                         <Link className="navbar__link navbar__item__right" to="" onClick={() => {
+                            // setSelectedUserBaby(undefined);
                             localStorage.removeItem("app_user");
                             navigate("/", { replace: true })
                         }}>logout</Link>

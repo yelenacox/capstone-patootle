@@ -58,8 +58,7 @@ export const EntryForm = () => {
                     <h2 className="entry_form_title">New Entry</h2>
                     <fieldset>
                         <div className="form-group">
-                            <label htmlFor="baby_name">Baby:</label>
-                            {filteredBabies.map(
+                            {/* {filteredBabies.map(
                                 (userBaby) => {
                                     return <><input
                                         key={`entry--${userBaby.id}`}
@@ -74,7 +73,7 @@ export const EntryForm = () => {
                                             }
                                         } />
                                         <label for={userBaby?.baby?.name}>{userBaby?.baby?.name}</label></>
-                                })}
+                                })} */}
                         </div>
                     </fieldset>
                     <fieldset>
