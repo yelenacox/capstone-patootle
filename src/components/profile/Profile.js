@@ -1,12 +1,12 @@
-import { BabyForm } from "./BabyForm"
 import { BabyList } from "./BabyList"
-import { UserForm } from "./UserForm"
+import { User } from "./User"
 
 export const Profile = () => {
 
        return <>
-       
-       <UserForm /> <BabyList />
+       <div className="profile-container">
+       <User /> <BabyList />
+       </div>
 
        </>
     }

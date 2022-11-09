@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export const UserForm = () => {
+export const UserForm = ({setEdit, getUser}) => {
     const [profile, updateProfile] = useState({
         name: "",
         email: "",
@@ -13,9 +13,8 @@ export const UserForm = () => {
     useEffect(() => {
         fetch(`http://localhost:8088/users/${currentUser.id}`)
             .then(response => response.json())
-            .then((user) => {
-                const userObj = user
-                updateProfile(userObj)
+            .then((data) => {
+                updateProfile(data)
             })
     }, [])
 
@@ -38,8 +37,16 @@ export const UserForm = () => {
             body: JSON.stringify(profile)
         })
             .then(response => response.json())
+            // .then(() => {
+            //     setFeedback("User profile successfully saved")
+            // })
+            .then((data) => {
+                updateProfile(data)
+                getUser()
+                })
             .then(() => {
-                setFeedback("User profile successfully saved")
+                setEdit(false)
+                
             })
     }
 
@@ -49,9 +56,7 @@ export const UserForm = () => {
                 {feedback}
             </div>
             <h2 className="profile__title">User Profile</h2>
-            <fieldset>
                 <div className="form-group">
-                    <label htmlFor="name">Name:</label>
                     <input
                         required autoFocus
                         type="text"
@@ -65,10 +70,8 @@ export const UserForm = () => {
                             }
                         } />
                 </div>
-            </fieldset>
-            <fieldset>
+         
                 <div className="form-group">
-                    <label htmlFor="email">Email:</label>
                     <input type="email"
                         className="form-control"
                         value={profile.email}
@@ -80,10 +83,8 @@ export const UserForm = () => {
                             }
                         } />
                 </div>
-            </fieldset>
-            <fieldset>
+         
                 <div className="form-group">
-                    <label htmlFor="relationship">Relationship:</label>
                     <input type="text"
                         className="form-control"
                         value={profile.relationship}
@@ -95,7 +96,7 @@ export const UserForm = () => {
                             }
                         } />
                 </div>
-            </fieldset>
+         
             <button
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                 className="btn btn-primary">
