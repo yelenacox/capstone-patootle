@@ -11,7 +11,6 @@ export const NavSingleBaby = ({userBabies, setUserBabies, selectedUserBaby, setS
                 .then(response => response.json())
                 .then((data) => {
                     setUserBabies(data)
-                    // setSelectedUserBaby(data)
                 })
         
         }, []

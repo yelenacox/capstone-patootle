@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
 import { Entry } from "./Entry"
-import { EntryEdit } from "./EntryEdit"
 
 export const EntryList = ({ selectedUserBaby }) => {
     const [entries, setEntries] = useState([])
     const [userBabies, setUserBabies] = useState([])
-    // const [selectedUserBaby, setSelectedUserBaby] = useState([])
     const [filteredUserEntries, setFilteredUserEntries] = useState([])
     const [filteredBabyEntries, setFilteredBabyEntries] = useState([])
 
@@ -28,7 +25,6 @@ export const EntryList = ({ selectedUserBaby }) => {
                 .then(response => response.json())
                 .then((array) => {
                     setUserBabies(array.filter((userBaby) => userBaby.userId === currentUser.id))
-                    //setSelectedUserBaby(array[0].babyId)
                 })
 
         },
@@ -42,7 +38,7 @@ export const EntryList = ({ selectedUserBaby }) => {
         ,
         [entries]
     )
-    // }
+
     const filteredEntries = () => {
         let entries;
         if (userBabies.length > 1) {
@@ -63,28 +59,10 @@ export const EntryList = ({ selectedUserBaby }) => {
     }
 
 
-
     return <>
 
         <h2>Entries</h2>
-        {/* <label htmlFor="baby_name">Baby:</label> */}
-
-        {/* {userBabies.map(
-            (userBaby) => {
-                    return <><input
-                        key={`userBaby--${userBaby.id}`}
-                        type="radio"
-                        value={userBaby?.babyId}
-                        name={userBaby?.baby?.name}
-                        checked={selectedUserBaby === userBaby?.babyId}
-                        onChange={
-                            (e) => {
-                                (parseInt(e.target.value))
-                            }
-                        } />
-                        <label htmlFor={userBaby?.baby?.name}>{userBaby?.baby?.name}</label></>
-                
-            })} */}
+    
         <article className="entries">
             {filteredEntries()
             }
