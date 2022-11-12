@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import { Entry } from "./Entry"
+import { EntryFilter } from "./EntryFilter"
 
 export const EntryList = ({ selectedUserBaby }) => {
     const [entries, setEntries] = useState([])
     const [userBabies, setUserBabies] = useState([])
     const [filteredUserEntries, setFilteredUserEntries] = useState([])
     const [filteredBabyEntries, setFilteredBabyEntries] = useState([])
+    const [typeChoice, setTypeChoice] = useState('0')
 
 
     const currentUser = JSON.parse(localStorage.getItem("app_user"))
@@ -44,6 +46,9 @@ export const EntryList = ({ selectedUserBaby }) => {
         if (userBabies.length > 1) {
             entries = filteredUserEntries.filter(entry => entry.userBabyId === parseInt(selectedUserBaby))
         }
+        if(typeChoice!=='0'){
+            entries = filteredUserEntries.filter(entry => entry.entryType === typeChoice)
+        }
         else { entries = filteredUserEntries }
         return entries.map(
             (entry) => <Entry
@@ -58,14 +63,16 @@ export const EntryList = ({ selectedUserBaby }) => {
         )
     }
 
-
     return <>
 
         <h2>Entries</h2>
-    
         <article className="entries">
+            <div className="entry_filter">
+               <EntryFilter setTypeChoice={setTypeChoice}/>
+            </div>
             {filteredEntries()
             }
+
         </article>
     </>
 }

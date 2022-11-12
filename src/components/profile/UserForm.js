@@ -60,7 +60,7 @@ export const UserForm = ({setEdit, getUser}) => {
                     <input
                         required autoFocus
                         type="text"
-                        className="form-control"
+                        className="form-control-profile"
                         value={profile.name}
                         onChange={
                             (evt) => {
@@ -73,7 +73,7 @@ export const UserForm = ({setEdit, getUser}) => {
          
                 <div className="form-group">
                     <input type="email"
-                        className="form-control"
+                        className="form-control-profile"
                         value={profile.email}
                         onChange={
                             (evt) => {
@@ -86,7 +86,7 @@ export const UserForm = ({setEdit, getUser}) => {
          
                 <div className="form-group">
                     <input type="text"
-                        className="form-control"
+                        className="form-control-profile"
                         value={profile.relationship}
                         onChange={
                             (evt) => {

@@ -34,13 +34,11 @@ export const BabyForm = ({userBabyObj, setEdit}) => {
     }
 
     return (
-        <form className="profile">
-             <fieldset>
+        <form className="profile-baby">
+            
                 <div className="form-group">
-                    <label htmlFor="picture">Picture:</label>
                     <input type="text"
-                        className="form-control"
-                        // placeholder={profile?.baby?.picture}
+                        className="form-control-profile"
                         value={profile?.baby?.picture}
                         onChange={
                             (evt) => {
@@ -50,14 +48,13 @@ export const BabyForm = ({userBabyObj, setEdit}) => {
                             }
                         } />
                 </div>
-            </fieldset>
-            <fieldset>
+            
+           
                 <div className="form-group">
                     <input
                         required autoFocus
                         type="text"
-                        className="form-control"
-                        // placeholder={profile?.baby?.name}
+                        className="form-control-profile"
                         value={profile?.baby?.name}
                         onChange={
                             (evt) => {
@@ -67,13 +64,11 @@ export const BabyForm = ({userBabyObj, setEdit}) => {
                             }
                         } />
                 </div>
-            </fieldset>
-            <fieldset>
+            
+           
                 <div className="form-group">
-                    <label htmlFor="birthday">Baby's Birthday:</label>
                     <input type="date"
-                        className="form-control"
-                        // placeholder={profile?.baby?.birthday}
+                        className="form-control-profile"
                         value={profile?.baby?.birthday}
                         onChange={
                             (evt) => {
@@ -83,7 +78,7 @@ export const BabyForm = ({userBabyObj, setEdit}) => {
                             }
                         } />
                 </div>
-            </fieldset>
+            
             <button
                 onClick={(event) => handleSaveButtonClick(event)}
                 className="btn btn-primary">
