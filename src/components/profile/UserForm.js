@@ -8,7 +8,6 @@ export const UserForm = ({setEdit, getUser}) => {
     })
     
     const currentUser = JSON.parse(localStorage.getItem("app_user"))
-    const [feedback, setFeedback] = useState("")
 
     useEffect(() => {
         fetch(`http://localhost:8088/users/${currentUser.id}`)
@@ -17,13 +16,6 @@ export const UserForm = ({setEdit, getUser}) => {
                 updateProfile(data)
             })
     }, [])
-
-    useEffect(() => {
-        if (feedback !== "") {
-
-            setTimeout(() => setFeedback(""), 2000);
-        }
-    }, [feedback])
 
   
     const handleSaveButtonClick = (event) => {
@@ -37,9 +29,7 @@ export const UserForm = ({setEdit, getUser}) => {
             body: JSON.stringify(profile)
         })
             .then(response => response.json())
-            // .then(() => {
-            //     setFeedback("User profile successfully saved")
-            // })
+
             .then((data) => {
                 updateProfile(data)
                 getUser()
@@ -52,9 +42,6 @@ export const UserForm = ({setEdit, getUser}) => {
 
     return (
         <form className="profile">
-            <div className={`${feedback.includes("Error") ? "error" : "feedback"} ${feedback === "" ? "invisible" : "visible"}`}>
-                {feedback}
-            </div>
             <h2 className="profile__title">User Profile</h2>
                 <div className="form-group">
                     <input
@@ -101,7 +88,7 @@ export const UserForm = ({setEdit, getUser}) => {
                 onClick={(clickEvent) => handleSaveButtonClick(clickEvent)}
                 className="btn btn-primary">
                 Update Profile
-            </button>
+            </button> 
         </form>
     )
 }

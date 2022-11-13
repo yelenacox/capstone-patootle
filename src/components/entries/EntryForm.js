@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import "./EntryForm.css"
+import bottleDiaperPacifier from '../../images/bottle-diaper-pacifier.png'
 
 export const EntryForm = ({selectedUserBaby}) => {
     const [entry, update] = useState({
@@ -118,7 +119,7 @@ export const EntryForm = ({selectedUserBaby}) => {
                     </button>
                 </form>
             </section>
-           <div className="side_picture"><img className="entry_form_picture" src="https://i.ibb.co/BGKn1nL/bottle-diaper-pacifier.png"/></div>
+           <div className="side_picture"><img className="entry_form_picture" src={bottleDiaperPacifier}/></div>
         </article>
         </>
 }

@@ -16,9 +16,7 @@ export const NavBar = ({userBabies, setUserBabies, selectedUserBaby, setSelected
                 <li className="navbar__item active navbar__all navbar__center">
                     <Link className="navbar__link" to="/entries">all entries</Link>
                 </li>
-                <li className="navbar__item active navbar__add__baby navbar__center">
-                    <Link className="navbar__link" to="/add_baby">add baby</Link>
-                </li></div>
+               </div>
             <div className="navbar__right">
                <div className="nav_baby"><NavBabyChoice userBabies={userBabies} setUserBabies={setUserBabies} selectedUserBaby={selectedUserBaby} setSelectedUserBaby={setSelectedUserBaby}/></div>
                 <div className="nav_div_right"><li className="navbar__item active navbar__item__right">

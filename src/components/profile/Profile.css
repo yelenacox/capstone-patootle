@@ -10,7 +10,7 @@
 
 .user {
     flex: 1 1;
-    padding: 20px 90px;
+    padding: 20px 85px;
     font-size: 16px;
     width:fit-content;
     box-shadow: 0px 3px 10px rgb(0 0 0 / 0.3);
@@ -50,7 +50,35 @@
     margin-top: 111px;
 }
 
+.user_button {
+    margin-right: 10px;
+}
 
 
+.babies_form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    background-color: rgb(253, 254, 248, 0.7);
+    padding: 20px;
+    border: 1px solid #453945;
+}
 
+.baby_form {
+    flex: 1 1;
+    padding: 20px 70px;
+    font-size: 16px;
+    min-width: fit-content;
+    box-shadow: 0px 3px 10px rgb(0 0 0 / 0.3);
+    background-color: #E0EEE7;
+    border: 1px solid #453945;
+    border-radius: 30px;
+    margin: 20px 0 20px 20px;
+}
+
+.add-baby-picture {
+    width: 325px;
+}
 

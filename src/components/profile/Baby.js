@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { BabyForm } from "./BabyForm"
+import babyIcon from '../../images/babyIcon.jpg'
 
 export const Baby = ({ userBaby }) => {
 
@@ -12,7 +13,7 @@ export const Baby = ({ userBaby }) => {
              {userBaby?.baby?.picture !== "" ?
                     <img className="baby_image" src={userBaby?.baby?.picture} />
                     : 
-                    <img className="baby_image" src="https://i.ibb.co/VQs2j8B/baby-icon.jpg" />}
+                    <img className="baby_image" src={babyIcon} />}
                 <div>{userBaby?.baby?.name}</div>
                 <div>{userBaby?.baby?.birthday}</div>
                
