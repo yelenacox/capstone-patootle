@@ -22,7 +22,7 @@
 
 .entry_form {
     flex: 1 1;
-    padding: 20px 90px;
+    padding: 20px 70px;
     font-size: 16px;
     max-width: fit-content;
     box-shadow: 0px 3px 10px rgb(0 0 0 / 0.3);
@@ -52,6 +52,18 @@
 }
 
 .input_date_time {
-    width: fit-content;
-    height: fit-content;
+    width: 183px;
+    height: 18px;
+    margin-bottom: 2px;
+}
+
+.entry_type {
+    margin-bottom: 20px;
+    float: right;
+}
+
+.entry_button {
+    width: 20px;
+    cursor: pointer;
+    margin: 5px 10px 0 0;
 }

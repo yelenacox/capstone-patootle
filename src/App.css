@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Syne:wght@520;600&display=swap');
 
 body,
-button,
 input,
 select,
 textarea {
@@ -19,4 +18,21 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Fredoka One', cursive;
   letter-spacing: 2px;
   color: rgb(69, 57, 69, 0.8);
+}
+
+button {
+  background-color: rgb(253, 254, 248);
+  border: 1px solid #473D66;
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: #453945;
+  font-weight: bold;
+  transition-duration: 0.4s;
+  margin-top: 5px;
+}
+
+button:hover {
+  background-color: #9B93B3;
+  color: #ffffff;
+  border: 1px solid #9B93B3;
 }

@@ -21,7 +21,7 @@ export const NavMultipleBabies = ({userBabies, setUserBabies, selectedUserBaby, 
                     <div className="select-group navbar__item__right">
                         <label htmlFor="baby_choice" className="baby_choice_title">Select Baby </label>
                         <select className="baby_choice"
-                            value={userBabies.babyId}
+                            value={selectedUserBaby}
                             required
                             onChange={
                                 (e) => {

@@ -11,7 +11,12 @@ export const EntryEditSamePage = ({ setEdit, entryObj, getAllEntries }) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(entry)
+            body: JSON.stringify(  {
+                userBabyId: entry.userBabyId,
+                entryType: entry.entryType,
+                description: entry.description,
+                dateTime: entry.dateTime,
+              },)
         })
             .then(response => response.json())
             .then((data) => {
@@ -28,7 +33,7 @@ export const EntryEditSamePage = ({ setEdit, entryObj, getAllEntries }) => {
                 <form className="edit_entry_form">
                     <div className="form-group">
                 
-                        <select className="entry_type"
+                        <select className="entry_type_edit"
                             value={entry.entryType}
                             onChange={
                                 (evt) => {

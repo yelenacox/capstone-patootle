@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 import { Entry } from "./Entry"
+import { EntryFilter } from "./EntryFilter"
 
 export const EntryList = ({ selectedUserBaby }) => {
     const [entries, setEntries] = useState([])
     const [userBabies, setUserBabies] = useState([])
     const [filteredUserEntries, setFilteredUserEntries] = useState([])
     const [filteredBabyEntries, setFilteredBabyEntries] = useState([])
+    const [typeChoice, setTypeChoice] = useState('0')
 
 
     const currentUser = JSON.parse(localStorage.getItem("app_user"))
-
+    const navigate = useNavigate()
     const getAllEntries = () => {
         fetch(`http://localhost:8088/entries?_expand=userBaby&_sort=dateTime&_order=desc`)
             .then(response => response.json())
@@ -38,13 +41,17 @@ export const EntryList = ({ selectedUserBaby }) => {
         ,
         [entries]
     )
+    useEffect(()=>{filteredEntries()},[selectedUserBaby])
 
     const filteredEntries = () => {
-        let entries;
+        let entries = filteredUserEntries;
         if (userBabies.length > 1) {
-            entries = filteredUserEntries.filter(entry => entry.userBabyId === parseInt(selectedUserBaby))
+            entries = entries.filter(entry => entry.userBabyId === parseInt(selectedUserBaby))
         }
-        else { entries = filteredUserEntries }
+        if(typeChoice!=='0'){
+            entries = entries.filter(entry => entry.entryType === typeChoice)
+
+        }
         return entries.map(
             (entry) => <Entry
                 key={`entry--${entry.id}`}
@@ -57,15 +64,17 @@ export const EntryList = ({ selectedUserBaby }) => {
             />
         )
     }
-
-
+    const displayEntries = filteredEntries()
     return <>
 
         <h2>Entries</h2>
-    
         <article className="entries">
-            {filteredEntries()
+            <div className="entry_filter">
+               <EntryFilter setTypeChoice={setTypeChoice}/>
+            </div>
+            {displayEntries.length > 0 ? displayEntries : <div>No entries yet? Write a <Link className="new_entry_link" to="/create">new entry</Link>!</div>
             }
+
         </article>
     </>
 }

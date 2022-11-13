@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import "./NavBar.css"
+import "./Profile.css"
+import addBabyImage from '../../images/add-baby-image.png'
 
 export const AddBaby = ({ userBabies, setUserBabies, setSelectedUserBaby }) => {
 
@@ -40,8 +41,11 @@ export const AddBaby = ({ userBabies, setUserBabies, setSelectedUserBaby }) => {
             body: JSON.stringify(babyToSendToAPI)
         })
             .then(res => res.json())
-            .then((babyObj) => { userBabyToSendToAPI.babyId = babyObj.id })
+            .then((babyObj) => { 
+                console.log(babyObj)
+                userBabyToSendToAPI.babyId = babyObj.id })
             .then(() => {
+                console.log(" this one dummy: ", userBabyToSendToAPI.babyId)
                 fetch(`http://localhost:8088/userBabies`, {
                     method: "POST",
                     headers: {
@@ -54,8 +58,8 @@ export const AddBaby = ({ userBabies, setUserBabies, setSelectedUserBaby }) => {
                         fetch(`http://localhost:8088/userBabies/?userId=${currentUser.id}&_expand=baby`).then(response => response.json())
                             .then((data) => {
                                 setUserBabies(data)
-                                setSelectedUserBaby(data[0].id)
-                                navigate("/");
+                                setSelectedUserBaby(userBabyToSendToAPI.babyId.toString())
+                                navigate("/profile");
                             })
                     })
             })
@@ -101,6 +105,7 @@ export const AddBaby = ({ userBabies, setUserBabies, setSelectedUserBaby }) => {
                     </fieldset>
                 </form>
             </section>
+            <div className="add-baby-picture-container"><img className="add-baby-picture" src={addBabyImage}/></div>
         </article>
     )
 }

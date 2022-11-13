@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { UserForm } from "./UserForm"
 
 export const User = () => {
@@ -6,6 +7,7 @@ export const User = () => {
     const [editButton, setEdit] = useState(false)
 
     const currentUser = JSON.parse(localStorage.getItem("app_user"))
+    const navigate = useNavigate()
 
     useEffect(
         () => {
@@ -32,7 +34,7 @@ export const User = () => {
                     <section className="user">
 
                         {
-                            editButton ? <UserForm userObj={user} setEdit={setEdit} getUser={getUser}/> : <>
+                            editButton ? <UserForm userObj={user} setEdit={setEdit} getUser={getUser} /> : <>
                                 <h2 className="profile__title">User Profile</h2>
                                 <div>{user.name}</div>
                                 <div>{user.email}</div>
@@ -40,10 +42,14 @@ export const User = () => {
 
                                 {editButton === false ? <>
                                     <button
-                                        className="edit_button"
+                                        className="user_button"
                                         onClick={() => setEdit(!editButton)
                                         }>
                                         Edit Profile</button>
+                                    <button
+                                        className="user_button"
+                                        onClick={() => { navigate("/add_baby") }}
+                                    >Add Baby</button>
                                 </> : ""
                                 }
                             </>

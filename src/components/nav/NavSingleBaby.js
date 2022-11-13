@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import babyIcon from '../../images/babyIcon.jpg'
 
 export const NavSingleBaby = ({userBabies, setUserBabies, selectedUserBaby, setSelectedUserBaby}) => {
 
@@ -22,7 +23,7 @@ export const NavSingleBaby = ({userBabies, setUserBabies, selectedUserBaby, setS
                 {userBabies[0]?.baby?.picture !== "" ?
                 <img className="nav_baby_image" src={userBabies[0]?.baby?.picture} />
                 :
-                <img className="nav_baby_image" src="https://i.ibb.co/VQs2j8B/baby-icon.jpg" />
+                <img className="nav_baby_image" src={babyIcon} />
                 }
             </li>
             <li className="navbar__item active navbar__item__right nav_baby_name">{userBabies[0]?.baby?.name}</li>
