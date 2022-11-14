@@ -25,7 +25,7 @@ export const Entry = ({ filteredBabyEntries, currentUser, entry, setEntries, get
                 method: "DELETE"
             })
                 .then(response => response.json())
-                .then(() => { return fetch(`http://localhost:8088/entries?_expand=userBaby`) })
+                .then(() => { return fetch(`http://localhost:8088/entries?_expand=userBaby&_sort=dateTime&_order=desc`) })
                 .then(response => response.json())
                 .then((newEntryData) => {
                     setEntries(newEntryData)
