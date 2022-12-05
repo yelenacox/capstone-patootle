@@ -6,7 +6,8 @@ Styling achieved through CSS3 for an intuitive user experience.
 
 ![Patootle](https://i.ibb.co/zSnT2yQ/Capture.jpg)
 
-To run the app, the JSON API needs to be run simultaneously: 
+To run the app, the JSON API needs to be run before: [Patootle API](https://github.com/yelenacox/patootle-api)
+
 ## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
