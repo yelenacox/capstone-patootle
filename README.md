@@ -4,6 +4,8 @@ Patootle is an app for parents and caregivers to easily track and access daily a
 App has full CRUD capability (React, API fetch calls, React-Routing, and JSON server). All images custom developed using Canva.
 Styling achieved through CSS3 for an intuitive user experience.
 
+![Patootle](https://i.ibb.co/zSnT2yQ/Capture.jpg)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
