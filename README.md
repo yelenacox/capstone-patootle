@@ -1,3 +1,9 @@
+# Patootle 
+
+Patootle is an app for parents and caregivers to easily track and access daily activities for their infant. The user can add multiple infants to their account and log events, such as diaper, nap, liquids, or solid foods. Entries are displayed chronologically, can be filtered by type, and edited as needed.
+App has full CRUD capability (React, API fetch calls, React-Routing, and JSON server). All images custom developed using Canva.
+Styling achieved through CSS3 for an intuitive user experience.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
