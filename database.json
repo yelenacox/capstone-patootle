@@ -1,0 +1,180 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Yelena",
+      "email": "yelenacox@gmail.com",
+      "relationship": "Parent",
+      "isAdmin": true
+    },
+    {
+      "name": "Jane Doe",
+      "email": "jane@email.com",
+      "relationship": "Parent",
+      "isAdmin": true,
+      "id": 2
+    }
+  ],
+  "babies": [
+    {
+      "name": "Daisy",
+      "picture": "https://i.ibb.co/WN9mHQb/image.jpg",
+      "birthday": "2022-02-27",
+      "id": 1
+    },
+    {
+      "name": "Fred",
+      "picture": "https://i.pinimg.com/236x/34/41/a0/3441a0fafa2e79920731253ec24c599e.jpg",
+      "birthday": "2022-04-05",
+      "id": 2
+    },
+    {
+      "name": "Jessica",
+      "picture": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/golden-retriever-royalty-free-image-506756303-1560962726.jpg?crop=0.672xw:1.00xh;0.166xw,0&resize=640:*",
+      "birthday": "2022-11-08",
+      "id": 3
+    },
+    {
+      "name": "Fred",
+      "picture": "https://i.pinimg.com/736x/bd/dc/ae/bddcaed92346339fa798b464bf694771.jpg",
+      "birthday": "2022-10-30",
+      "id": 4
+    }
+  ],
+  "userBabies": [
+    {
+      "id": 1,
+      "userId": 1,
+      "babyId": 1
+    },
+    {
+      "userId": 2,
+      "babyId": 2,
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "babyId": 3,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "babyId": 4,
+      "id": 4
+    }
+  ],
+  "entries": [
+    {
+      "userBabyId": 2,
+      "entryType": "Diaper",
+      "description": "Poopy!",
+      "dateTime": "2022-11-12T20:32",
+      "id": 9
+    },
+    {
+      "userBabyId": 2,
+      "entryType": "Nap",
+      "description": "Napped for 30 minutes.",
+      "dateTime": "2022-11-12T21:00",
+      "id": 10
+    },
+    {
+      "userBabyId": 3,
+      "entryType": "Liquids",
+      "description": "Drank 8oz formula.",
+      "dateTime": "2022-11-12T21:41",
+      "id": 11
+    },
+    {
+      "userBabyId": 3,
+      "entryType": "Diaper",
+      "description": "Peed. A lot. ",
+      "dateTime": "2022-11-12T21:37",
+      "id": 12
+    },
+    {
+      "userBabyId": 2,
+      "entryType": "Solid Food",
+      "description": "Ate carrot puree. Got it all over his face.",
+      "dateTime": "2022-11-12T17:42",
+      "id": 13
+    },
+    {
+      "userBabyId": 1,
+      "entryType": "Liquids",
+      "description": "Ate 8.5 oz when she woke up.",
+      "dateTime": "2022-11-14T07:50",
+      "id": 14
+    },
+    {
+      "userBabyId": 1,
+      "entryType": "Diaper",
+      "description": "Big poopies! And wet.",
+      "dateTime": "2022-11-14T07:30",
+      "id": 15
+    },
+    {
+      "userBabyId": 1,
+      "entryType": "Liquids",
+      "description": "Ate 8.5 oz.",
+      "dateTime": "2022-11-14T11:15",
+      "id": 16
+    },
+    {
+      "userBabyId": 1,
+      "entryType": "Diaper",
+      "description": "Pooped.",
+      "dateTime": "2022-11-14T15:50",
+      "id": 17
+    },
+    {
+      "userBabyId": 1,
+      "entryType": "Liquids",
+      "description": "Ate 7 oz.",
+      "dateTime": "2022-11-14T15:50",
+      "id": 18
+    },
+    {
+      "userBabyId": 1,
+      "entryType": "Liquids",
+      "description": "Drank hella milkies. 8.5 oz.",
+      "dateTime": "2022-11-14T19:51",
+      "id": 19
+    },
+    {
+      "userBabyId": 1,
+      "entryType": "Diaper",
+      "description": "Wet diaper before bedtime routine.",
+      "dateTime": "2022-11-14T19:40",
+      "id": 20
+    },
+    {
+      "userBabyId": 1,
+      "entryType": "Nap",
+      "description": "Napped for 50 minutes.",
+      "dateTime": "2022-11-14T11:50",
+      "id": 21
+    },
+    {
+      "userBabyId": 1,
+      "entryType": "Nap",
+      "description": "Napped for almost 2 hours.",
+      "dateTime": "2022-11-14T17:00",
+      "id": 22
+    },
+    {
+      "userBabyId": 4,
+      "entryType": "Nap",
+      "description": "Napped for 30 minutes.",
+      "dateTime": "2022-11-15T10:17",
+      "id": 23
+    },
+    {
+      "userBabyId": 4,
+      "entryType": "Liquids",
+      "description": "Drank hella milkies. 8.5 oz",
+      "dateTime": "2022-11-15T09:42",
+      "id": 24
+    }
+  ]
+}
